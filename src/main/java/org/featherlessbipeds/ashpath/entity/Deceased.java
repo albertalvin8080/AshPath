@@ -18,10 +18,10 @@ import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
-@Table(name = "deceased")
 @Getter
 @Setter
+@Entity
+@Table(name = "deceased")
 // Dead guy
 public class Deceased
 {
@@ -30,30 +30,26 @@ public class Deceased
     @Column(name = "deceased_id")
     private Long id;
     
-    @Column(name = "deceased_name")
+    @Column(name = "deceased_name", nullable = false)
     private String name;
     
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "deceased_birth_date")
+    @Column(name = "deceased_birth_date", nullable = false)
     private Date birthDate;
     
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "deceased_death_date")
+    @Column(name = "deceased_death_date", nullable = false)
     private Date deathDate;
     
     @OneToOne
-    @JoinColumn(name = "grave_id")
+    @JoinColumn(name = "grave_id", nullable = false)
     private Grave grave;
 
     @ManyToOne
-    @JoinColumn(name = "cremation_queue_id")
+    @JoinColumn(name = "cremation_queue_id", nullable = true)
     private CremationQueue cremationQueue;
-
-    @ManyToMany // Remember, strong side
-    @JoinTable(
-            name = "deceased_necrotomist",
-            joinColumns = @JoinColumn(name = "id_deceased"),
-            inverseJoinColumns = @JoinColumn(name = "id_necrotomist")
-    )
-    private Set<Necrotomist> necrotomistSet;
+    
+    @ManyToOne
+    @JoinColumn(name = "necrotomist_id")
+    private Necrotomist necrotomist;
 }

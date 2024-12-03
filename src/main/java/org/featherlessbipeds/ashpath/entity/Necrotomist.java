@@ -6,17 +6,18 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
-@Table(name = "necrotomist")
 @Getter
 @Setter
+@Entity
+@Table(name = "necrotomist")
 // The guy who performs autopsies and shit
 public class Necrotomist
 {
@@ -24,14 +25,18 @@ public class Necrotomist
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "necrotomist_id")
     private Long id;
-    
-    @Column(name = "necrotomist_specialization")
+
+    @Column(name = "necrotomist_specialization", nullable = false)
     private String specialization; // ex: "Autopsy technician"
-    
-    @ManyToOne
-    @JoinColumn(name = "cremation_queue_id")
-    private CremationQueue cremationQueue;
-    
-    @ManyToMany(mappedBy = "necrotomistSet")
+
+    @ManyToMany
+    @JoinTable(
+            name = "necrotomist_cremation_queue",
+            joinColumns = @JoinColumn(name = "necrotomist_id"),
+            inverseJoinColumns = @JoinColumn(name = "cremation_queue_id")
+    )
+    private Set<CremationQueue> cremationQueueSet;
+
+    @OneToMany(mappedBy = "necrotomist")
     private Set<Deceased> deceasedSet;
 }

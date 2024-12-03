@@ -7,16 +7,17 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
-@Table(name = "cremation_queue")
 @Getter
 @Setter
+@Entity
+@Table(name = "cremation_queue")
 public class CremationQueue
 {
     @Id
@@ -24,9 +25,10 @@ public class CremationQueue
     @Column(name = "cremation_queue_id")
     private Long id;
 
+    // Beware of circular reference
     @OneToMany(mappedBy = "cremationQueue", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Deceased> deceasedSet;
-
-    @OneToMany(mappedBy = "cremationQueue", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    
+    @ManyToMany(mappedBy = "cremationQueueSet", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Necrotomist> necrotomistSet;
 }
