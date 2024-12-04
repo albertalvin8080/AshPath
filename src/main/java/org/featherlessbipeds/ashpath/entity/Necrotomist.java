@@ -18,7 +18,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "necrotomist")
-// The guy who performs autopsies and shit
+// The guy who performs autopsies and stuff
 public class Necrotomist
 {
     @Id

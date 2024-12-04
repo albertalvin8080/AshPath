@@ -13,10 +13,10 @@ import lombok.Setter;
 @Setter
 @Entity
 @DiscriminatorValue("ADMIN")
-@Table(name = "admin")
+@Table(name = "app_admin")
 public class Admin extends User
 {
-    @Column(name = "admin_role", nullable = false)
     @Enumerated(EnumType.STRING)
+    @Column(name = "admin_role", nullable = false)
     private AdminRole role;
 }

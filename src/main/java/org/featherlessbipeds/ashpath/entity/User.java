@@ -9,7 +9,7 @@ import lombok.Setter;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING, columnDefinition = "VARCHAR(10)")
-@Table(name = "user")
+@Table(name = "app_user") // "user" is a reserved word.
 public abstract class User
 {
     @Id
