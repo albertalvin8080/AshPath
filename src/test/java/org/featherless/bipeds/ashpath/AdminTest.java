@@ -1,6 +1,6 @@
 package org.featherless.bipeds.ashpath;
 
-import jdk.jfr.Description;
+import org.featherless.bipeds.ashpath.utils.TestHelper;
 import org.featherlessbipeds.ashpath.entity.Admin;
 import org.featherlessbipeds.ashpath.entity.AdminRole;
 import org.junit.Test;
@@ -19,7 +19,7 @@ public class AdminTest extends TestHelper
         
         em.persist(adm);
         // Why the hell is this necessary? Shoundn't it be fetching from the persistence context?
-        em.flush(); 
+        em.flush();
         
         assertNotNull(adm.getId());
         

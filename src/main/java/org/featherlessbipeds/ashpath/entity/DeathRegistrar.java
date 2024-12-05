@@ -29,11 +29,11 @@ public class DeathRegistrar extends User
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
-    @Column(name = "registration_date")
+    @Column(name = "registration_date", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date registrationDate;
 
-    @Column(name = "last_activity_date")
+    @Column(name = "last_activity_date", nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastActivityDate;
 }
