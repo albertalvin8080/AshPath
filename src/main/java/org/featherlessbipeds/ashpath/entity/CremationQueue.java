@@ -38,8 +38,7 @@ public class CremationQueue
         if(this.necrotomistSet == null){
            this.necrotomistSet = new HashSet<>();
         }
-        this.necrotomistSet.add(necro);
-        necro.addCremationQueue(this);
+        this.necrotomistSet.add(necro);   
     }
     
 }
