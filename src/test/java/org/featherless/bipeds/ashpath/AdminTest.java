@@ -30,6 +30,6 @@ public class AdminTest extends TestHelper
     @Test
     public void fetch_admin()
     {
-
+        
     }
 }

@@ -13,7 +13,7 @@ import org.dbunit.operation.DatabaseOperation;
 
 public class DbUnitUtil
 {
-    private static final String XML_FILE = "src/main/resources/dbunit/dataset.xml";
+    private static final String XML_FILE = "/dbunit/dataset.xml";
 
     public static void inserirDados()
     {
