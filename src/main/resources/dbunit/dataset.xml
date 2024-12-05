@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <!-- Users table (abstract base class entries) -->
+<!--     Users table (abstract base class entries) 
     <app_user user_id="1" username="admin1" password_hash="abcde" user_type="ADMIN" />
     <app_user user_id="2" username="Jakub" password_hash="12345abcde" user_type="D_REGISTRAR" />
 
-    <!-- Admin table -->
+     Admin table 
     <app_admin user_id="1" admin_role="SUPER_ADMIN" />
 
-    <!-- Death Registrar table -->
+     Death Registrar table 
     <death_registrar 
         user_id="2"
         full_name="Jakub Farobek" 
@@ -15,6 +15,23 @@
         email="yakubfarobec@example.com" 
         registration_date="2023-01-15T10:00:00" 
         last_activity_date="2023-11-20T15:45:00" 
-    />
+    />-->
+    
+     <!--Necrotomista de ID 1 -->
+    <necrotomist necrotomist_specialization="Acidentes fatais"  />
+     <!--Cova de ID 1 -->
+     <grave grave_location="5" />
+      <!--Cova de ID 2 -->
+     <grave grave_location="4" />
+      <!--Fila de cremacao de ID 1 -->
+      <cremation_queue cremation_queue_id="1" />  
+    <!--Defunto de ID 1 -->
+    <deceased deceased_name="Neymar" deceased_birth_date="1992-01-12 1:00:30" deceased_cause_of_death="Bolada na nuca"  deceased_death_date="2020-01-12 1:00:30" grave_id="1" necrotomist_id="1" cremation_queue_id="1" />
+   
+    <!--Defunto de ID 2 -->
+    <deceased deceased_name="Pablo Emilio" deceased_birth_date="1992-01-12 1:00:30" deceased_cause_of_death="Bala"  deceased_death_date="2020-01-12 1:00:30" grave_id="2" necrotomist_id="1" cremation_queue_id="1" />
+   
+    <necrotomist_cremation_queue necrotomist_id="1" cremation_queue_id="1" />
+    
 </dataset>
 
