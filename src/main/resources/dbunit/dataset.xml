@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <!-- Users table (abstract base class entries) -->
+    <app_user user_id="1" username="admin1" password_hash="abcde" user_type="ADMIN" />
+    <app_user user_id="2" username="Jakub" password_hash="12345abcde" user_type="D_REGISTRAR" />
+
+    <!-- Admin table -->
+    <app_admin user_id="1" admin_role="SUPER_ADMIN" />
+
+    <!-- Death Registrar table -->
+    <death_registrar 
+        user_id="2"
+        full_name="Jakub Farobek" 
+        contact_number="123-456-7890" 
+        email="yakubfarobec@example.com" 
+        registration_date="2023-01-15T10:00:00" 
+        last_activity_date="2023-11-20T15:45:00" 
+    />
+</dataset>
+

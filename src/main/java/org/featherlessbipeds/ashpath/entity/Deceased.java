@@ -32,6 +32,9 @@ public class Deceased
     
     @Column(name = "deceased_name", nullable = false)
     private String name;
+
+    @Column(name = "deceased_cause_of_death", nullable = false)
+    private String causeOfDeath;
     
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "deceased_birth_date", nullable = false)
