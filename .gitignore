@@ -121,7 +121,7 @@ tensorflow/*/datasets/
 tensorflow/*/tfrecords
 
 **/.ipynb_checkpoints
-**/evaluation/
+**/evaluation*/
 */*/train/
 */*/val/
 */*/bundle/
