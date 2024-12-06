@@ -36,7 +36,7 @@
     <grave grave_location="Frankfurt" />
     <grave grave_location="Dusseldorf" />
     <grave grave_location="511 Kinderheim" />
-    
+    <grave grave_location="71 IFPE" />
     <!-- Deceased table -->
     <deceased 
         deceased_name="Helmuth Voss" 
@@ -45,7 +45,7 @@
         deceased_death_date="2023-10-01 12:00:00" 
         grave_id="1" 
         cremation_queue_id="1" 
-        necrotomist_id="1"
+       
     />
     <deceased 
         deceased_name="Josef Baumler" 
@@ -62,6 +62,16 @@
         deceased_birth_date="1980-08-10 00:00:00" 
         deceased_death_date="2023-11-02 14:00:00" 
         grave_id="3" 
+        cremation_queue_id="2" 
+        necrotomist_id="1"
+    />
+    
+      <deceased 
+        deceased_name="Neymar" 
+        deceased_cause_of_death="Bolada" 
+        deceased_birth_date="1980-08-10 00:00:00" 
+        deceased_death_date="2023-11-02 14:00:00" 
+        grave_id="4" 
         cremation_queue_id="2" 
         necrotomist_id="1"
     />

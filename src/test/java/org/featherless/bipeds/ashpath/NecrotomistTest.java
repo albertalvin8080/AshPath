@@ -61,21 +61,14 @@ public void buscando_necrotomista(){
     
     necrotomist_buscado.getDeceasedSet().forEach( dec ->{
             assertThat(dec.getName(), CoreMatchers.anyOf(
-                    equalTo("Helmuth Voss"),
+                    equalTo("Neymar"),
                     equalTo("Josef Baumler"),
                     equalTo("Kroner Hass")            
             
             ));
     
     });
-    
-    
-
-    
-
-    
-    
-    
+   
 }
 
 }
