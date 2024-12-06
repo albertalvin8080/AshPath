@@ -1,4 +1,4 @@
-package org.featherless.bipeds.ashpath.utils;
+package org.featherlessbipeds.ashpath.utils;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

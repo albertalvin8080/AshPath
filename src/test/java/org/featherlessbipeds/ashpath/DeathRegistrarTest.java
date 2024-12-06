@@ -1,9 +1,9 @@
-package org.featherless.bipeds.ashpath;
+package org.featherlessbipeds.ashpath;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import org.featherless.bipeds.ashpath.utils.TestHelper;
+import org.featherlessbipeds.ashpath.utils.TestHelper;
 import org.featherlessbipeds.ashpath.entity.DeathRegistrar;
 import static org.junit.Assert.*;
 import org.junit.Test;

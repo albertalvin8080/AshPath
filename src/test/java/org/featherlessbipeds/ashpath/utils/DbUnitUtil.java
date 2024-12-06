@@ -1,4 +1,4 @@
-package org.featherless.bipeds.ashpath.utils;
+package org.featherlessbipeds.ashpath.utils;
 
 import java.io.InputStream;
 import java.sql.Connection;

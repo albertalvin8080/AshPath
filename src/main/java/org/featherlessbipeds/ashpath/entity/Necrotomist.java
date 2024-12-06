@@ -22,6 +22,7 @@ import lombok.Setter;
 // The guy who performs autopsies and stuff
 public class Necrotomist
 {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "necrotomist_id")
@@ -40,23 +41,25 @@ public class Necrotomist
 
     @OneToMany(mappedBy = "necrotomist")
     private Set<Deceased> deceasedSet;
-    
-    public void addCremationQueue(CremationQueue queue){
-        
-        if(this.cremationQueueSet == null){
+
+    public void addCremationQueue(CremationQueue queue)
+    {
+        if (this.cremationQueueSet == null)
+        {
             this.cremationQueueSet = new HashSet<>();
         }
-       this.cremationQueueSet.add(queue);
-        queue.addNecrotomist(this);
-        
+        this.cremationQueueSet.add(queue);
+        queue.getNecrotomistSet().add(this);
     }
-    
-      public void addDeceased(Deceased deceased){
-          if(this.deceasedSet == null){
-              this.deceasedSet = new HashSet<>();
-          }  
-          this.deceasedSet.add(deceased);
-          deceased.setNecrotomist(this);
+
+    public void addDeceased(Deceased deceased)
+    {
+        if (this.deceasedSet == null)
+        {
+            this.deceasedSet = new HashSet<>();
+        }
+        this.deceasedSet.add(deceased);
+        deceased.setNecrotomist(this);
     }
-    
+
 }

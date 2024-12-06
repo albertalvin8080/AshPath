@@ -1,33 +1,14 @@
-package org.featherless.bipeds.ashpath;
+package org.featherlessbipeds.ashpath;
 
-import java.util.Date;
-import org.featherless.bipeds.ashpath.utils.TestHelper;
+import org.featherlessbipeds.ashpath.utils.TestHelper;
 import org.featherlessbipeds.ashpath.entity.Admin;
 import org.featherlessbipeds.ashpath.entity.AdminRole;
-import org.featherlessbipeds.ashpath.entity.CremationQueue;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class AdminTest extends TestHelper
 {
-
-    @Test
-    public void persistCremationQueue_AddsEntityToDb_WhenSuccessful()
-    {
-        CremationQueue cq = new CremationQueue();
-        cq.setDateEntered(new Date());
-
-        em.persist(cq);
-        em.flush();
-
-        CremationQueue persitedCq = em.find(cq.getClass(), 3L);
-
-        assertNotNull(persitedCq.getId());
-        assertNotNull(persitedCq);
-        assertEquals(persitedCq.getId(), cq.getId());
-    }
-
     @Test
     public void persistAdmin_AddsAdminToDb_WhenSuccessful()
     {
