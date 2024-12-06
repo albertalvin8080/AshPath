@@ -10,6 +10,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.Getter;
@@ -25,6 +28,10 @@ public class CremationQueue
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cremation_queue_id")
     private Long id;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "cremation_queue_entered_date", nullable=true)
+    private Date dateEntered;
 
     // Beware of circular reference
     @OneToMany(mappedBy = "cremationQueue", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
