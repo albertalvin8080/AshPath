@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <!-- Users table (abstract base class entries) -->
+    <app_user username="Johan" password_hash="abcde" user_type="ADMIN" /> <!-- user_id==1 -->
+    <app_user username="Jakub" password_hash="12345abcde" user_type="D_REGISTRAR" /> <!-- user_id==2 -->
+    <app_user username="mononoke" password_hash="hashhashhash" user_type="ADMIN" /> <!-- user_id==3 -->
+
+    <!-- Admin table -->
+    <app_admin user_id="1" admin_role="SYSTEM_ADMIN" />
+    <app_admin user_id="3" admin_role="USER_ADMIN" />
+
+    <!-- Death Registrar table -->
+    <death_registrar
+        user_id="2"
+        full_name="Jakub Farobek"
+        contact_number="123-456-7890"
+        email="jakubfarobec@gmail.com"
+        registration_date="2023-01-15 10:00:00"
+        last_activity_date="2023-11-20 15:45:00"
+    />
+
+    <!-- Necrotomist table -->
+    <necrotomist
+        necrotomist_specialization="Autopsy Technician"
+    />
+
+    <!-- Cremation Queue table -->
+    <cremation_queue entered_date="2023-12-09 01:00:00" />
+    <cremation_queue entered_date="2023-10-01 12:00:00" />
+
+    <!-- Grave table -->
+    <grave grave_location="Frankfurt" />
+    <grave grave_location="Dusseldorf" />
+    <grave grave_location="511 Kinderheim" />
+
+    <!-- Deceased table -->
+    <deceased
+        deceased_name="Helmuth Voss"
+        deceased_cause_of_death="Heart Attack"
+        deceased_birth_date="1960-05-15 00:00:00"
+        deceased_death_date="2023-10-01 12:00:00"
+        grave_id="1"
+        cremation_queue_id="1"
+        necrotomist_id="1"
+    />
+    <deceased
+        deceased_name="Josef Baumler"
+        deceased_cause_of_death="Stroke"
+        deceased_birth_date="1955-03-22 00:00:00"
+        deceased_death_date="2023-09-15 08:30:00"
+        grave_id="2"
+        cremation_queue_id="1"
+        necrotomist_id="1"
+    />
+    <deceased
+        deceased_name="Kroner Hass"
+        deceased_cause_of_death="Accident"
+        deceased_birth_date="1980-08-10 00:00:00"
+        deceased_death_date="2023-11-02 14:00:00"
+        grave_id="3"
+        cremation_queue_id="2"
+        necrotomist_id="1"
+    />
+</dataset>
+
