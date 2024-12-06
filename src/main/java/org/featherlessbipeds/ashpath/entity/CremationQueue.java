@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.HashSet;
 import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,4 +32,13 @@ public class CremationQueue
     
     @ManyToMany(mappedBy = "cremationQueueSet", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Necrotomist> necrotomistSet;
+    
+    public void addNecrotomist(Necrotomist necro){
+        
+        if(this.necrotomistSet == null){
+           this.necrotomistSet = new HashSet<>();
+        }
+        this.necrotomistSet.add(necro);   
+    }
+    
 }

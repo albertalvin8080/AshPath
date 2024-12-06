@@ -10,6 +10,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.HashSet;
 import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,4 +40,23 @@ public class Necrotomist
 
     @OneToMany(mappedBy = "necrotomist")
     private Set<Deceased> deceasedSet;
+    
+    public void addCremationQueue(CremationQueue queue){
+        
+        if(this.cremationQueueSet == null){
+            this.cremationQueueSet = new HashSet<>();
+        }
+       this.cremationQueueSet.add(queue);
+        queue.addNecrotomist(this);
+        
+    }
+    
+      public void addDeceased(Deceased deceased){
+          if(this.deceasedSet == null){
+              this.deceasedSet = new HashSet<>();
+          }  
+          this.deceasedSet.add(deceased);
+          deceased.setNecrotomist(this);
+    }
+    
 }

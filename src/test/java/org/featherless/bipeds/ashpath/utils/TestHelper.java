@@ -19,7 +19,7 @@ public abstract class TestHelper
     public static void setUpClass()
     {
         emf = Persistence.createEntityManagerFactory("ashpath");
-        DbUnitUtil.inserirDados();
+       DbUnitUtil.inserirDados();
     }
 
     @AfterClass
