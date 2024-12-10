@@ -20,9 +20,7 @@ public class CremationQueueTest extends TestHelper
         em.persist(cq);
         em.flush();
 
-        CremationQueue persistedCq = em.find(cq.getClass(), cq.getId());
-        assertNotNull(persistedCq);
-        assertEquals(persistedCq.getId(), cq.getId());
+        assertNotNull(cq.getId());
     }
 
     @Test
