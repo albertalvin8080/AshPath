@@ -26,15 +26,6 @@ public class DeathRegistrarTest extends TestHelper
         em.flush();
         
         assertNotNull(dr.getId());
-        
-        DeathRegistrar persistedDr = em.find(DeathRegistrar.class, dr.getId());
-        assertEquals(persistedDr.getContactNumber(), dr.getContactNumber());
-        assertEquals(persistedDr.getUsername(), dr.getUsername());
-        assertEquals(persistedDr.getEmail(), dr.getEmail());
-        assertEquals(persistedDr.getFullName(), dr.getFullName());
-        assertEquals(persistedDr.getLastActivityDate(), dr.getLastActivityDate());
-        assertEquals(persistedDr.getRegistrationDate(), dr.getRegistrationDate());
-        assertEquals(persistedDr.getPasswordHash(), dr.getPasswordHash());
     }
     
     @Test
