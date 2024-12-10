@@ -18,19 +18,21 @@ import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
 
+@Setter
 @Getter
 @Entity
 @Table(name = "cremation_queue")
 public class CremationQueue {
     @Id
-    @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cremation_queue_id")
     private Long id;
 
+    @Setter(AccessLevel.NONE)
     @OneToMany(mappedBy = "cremationQueue", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Deceased> deceasedSet = new HashSet<>();
 
+    @Setter(AccessLevel.NONE)
     @ManyToMany(mappedBy = "cremationQueueSet", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Necrotomist> necrotomistSet = new HashSet<>();
 
