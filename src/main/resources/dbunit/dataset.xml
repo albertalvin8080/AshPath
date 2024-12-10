@@ -23,6 +23,9 @@
     <necrotomist
         necrotomist_specialization="Autopsy Technician"
     />
+    <necrotomist
+        necrotomist_specialization="Forensic Investigation"
+    />
 
     <!-- Cremation Queue table -->
     <cremation_queue entered_date="2023-12-09 01:00:00" />
@@ -60,6 +63,15 @@
         grave_id="3"
         cremation_queue_id="2"
         necrotomist_id="1"
+    />
+    <deceased
+        deceased_name="Neymar"
+        deceased_cause_of_death="Death by balls."
+        deceased_birth_date="1992-08-10 00:00:00"
+        deceased_death_date="2023-11-02 14:00:00"
+        grave_id="3"
+        cremation_queue_id="2"
+        necrotomist_id="2"
     />
 </dataset>
 
