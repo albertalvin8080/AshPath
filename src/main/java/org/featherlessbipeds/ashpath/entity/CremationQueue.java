@@ -19,11 +19,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
 @Entity
 @Table(name = "cremation_queue")
 public class CremationQueue {
     @Id
+    @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cremation_queue_id")
     private Long id;
@@ -34,6 +34,7 @@ public class CremationQueue {
     @ManyToMany(mappedBy = "cremationQueueSet", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Necrotomist> necrotomistSet = new HashSet<>();
 
+    @Setter
     @Column(name = "entered_date")
     private Date enteredDate;
 }
