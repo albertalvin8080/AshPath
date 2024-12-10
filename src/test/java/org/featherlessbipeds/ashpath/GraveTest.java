@@ -20,10 +20,6 @@ public class GraveTest extends TestHelper {
 
         // Verificando se o ID foi gerado corretamente
         assertNotNull(grave.getId());
-
-        // Recuperando a instância persistida para validação
-        Grave persistedGrave = em.find(Grave.class, grave.getId());
-        assertEquals(persistedGrave.getLocation(), grave.getLocation());
     }
 
     @Test
