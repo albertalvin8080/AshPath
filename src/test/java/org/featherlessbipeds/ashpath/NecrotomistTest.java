@@ -18,6 +18,7 @@ public class NecrotomistTest extends TestHelper
         //Esse tem ID 2
         Necrotomist necrotomist = new Necrotomist();
         necrotomist.setSpecialization("Autopsy");
+        necrotomist.setName("Paulo Chair");
 
         Deceased deceased = em.find(Deceased.class, 1L);
         necrotomist.addDeceased(deceased);
@@ -40,6 +41,8 @@ public class NecrotomistTest extends TestHelper
         // These two tests depend on the state of the database. They should be avoided.
 //        assertEquals(2, necrotomist_buscado.getCremationQueueSet().size());
 //        assertEquals(3, necrotomist_buscado.getDeceasedSet().size());
+
+        assertEquals(necrotomist_buscado.getName(), "Serjao Foguetes");
 
         necrotomist_buscado.getCremationQueueSet().forEach(queue ->
         {
