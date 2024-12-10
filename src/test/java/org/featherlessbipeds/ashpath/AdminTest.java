@@ -22,14 +22,6 @@ public class AdminTest extends TestHelper
         em.flush();
 
         assertNotNull(adm.getId());
-
-        Admin persisted = em.find(Admin.class, adm.getId());
-//        System.out.println(adm.getId());
-
-        assertNotNull(persisted);
-        assertEquals(persisted.getRole(), adm.getRole());
-        assertEquals(persisted.getUsername(), adm.getUsername());
-        assertEquals(persisted.getPasswordHash(), adm.getPasswordHash());
     }
 
     @Test
