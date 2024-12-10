@@ -22,11 +22,13 @@ import lombok.Setter;
 // The guy who performs autopsies and stuff
 public class Necrotomist
 {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "necrotomist_id")
     private Long id;
+
+    @Column(name = "necrotomist_name")
+    private String name;
 
     @Column(name = "necrotomist_specialization", nullable = false)
     private String specialization; // ex: "Autopsy technician"
