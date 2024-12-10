@@ -33,6 +33,7 @@ public class Necrotomist
     @Column(name = "necrotomist_specialization", nullable = false)
     private String specialization; // ex: "Autopsy technician"
 
+    @Setter(AccessLevel.NONE)
     @ManyToMany
     @JoinTable(
             name = "necrotomist_cremation_queue",
@@ -41,6 +42,7 @@ public class Necrotomist
     )
     private Set<CremationQueue> cremationQueueSet;
 
+    @Setter(AccessLevel.NONE)
     @OneToMany(mappedBy = "necrotomist")
     private Set<Deceased> deceasedSet;
 
