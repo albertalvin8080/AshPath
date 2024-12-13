@@ -42,6 +42,8 @@ public abstract class TestHelper
         if (!et.getRollbackOnly())
         {
             et.commit();
+        } else {
+            et.rollback();
         }
         em.close();
     }
