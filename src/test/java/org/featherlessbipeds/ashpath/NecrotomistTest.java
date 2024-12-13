@@ -1,5 +1,6 @@
 package org.featherlessbipeds.ashpath;
 
+import java.sql.Timestamp;
 import org.featherlessbipeds.ashpath.utils.TestHelper;
 import org.featherlessbipeds.ashpath.entity.CremationQueue;
 import org.featherlessbipeds.ashpath.entity.Deceased;
@@ -46,15 +47,18 @@ public class NecrotomistTest extends TestHelper
 
         necrotomist_buscado.getCremationQueueSet().forEach(queue ->
         {
-            MatcherAssert.assertThat(queue.getId().toString(), CoreMatchers.allOf(equalTo("1"), equalTo("2")));
+            MatcherAssert.assertThat(queue.getEnteredDate(), CoreMatchers.anyOf(
+                    equalTo(Timestamp.valueOf("2023-12-09 01:00:00")),
+                    equalTo(Timestamp.valueOf("2023-10-01 12:00:00"))
+            ));
         });
 
         necrotomist_buscado.getDeceasedSet().forEach(dec ->
         {
-            MatcherAssert.assertThat(dec.getName(), CoreMatchers.allOf(
-                    equalTo("Neymar"),
+            MatcherAssert.assertThat(dec.getName(), CoreMatchers.anyOf(
                     equalTo("Josef Baumler"),
-                    equalTo("Kroner Hass")
+                    equalTo("Kroner Hass"),
+                    equalTo("Helmuth Voss")
             ));
         });
     }
