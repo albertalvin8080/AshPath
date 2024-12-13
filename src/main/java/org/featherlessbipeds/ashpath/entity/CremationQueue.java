@@ -14,9 +14,11 @@ import jakarta.persistence.Table;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import lombok.AccessLevel;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.eclipse.persistence.jpa.config.Cascade;
 
 @Setter
 @Getter
@@ -33,7 +35,7 @@ public class CremationQueue {
     private Set<Deceased> deceasedSet = new HashSet<>();
 
     @Setter(AccessLevel.NONE)
-    @ManyToMany(mappedBy = "cremationQueueSet", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "cremationQueueSet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, fetch = FetchType.LAZY)
     private Set<Necrotomist> necrotomistSet = new HashSet<>();
 
     @Setter
