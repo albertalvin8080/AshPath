@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.featherlessbipeds.ashpath.utils.TestHelper;
 import org.featherlessbipeds.ashpath.entity.DeathRegistrar;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -14,7 +16,7 @@ public class DeathRegistrarTest extends TestHelper
     public void persistDeathRegistrar_AddsEntityToDb_WhenSuccessful()
     {
         DeathRegistrar dr = new DeathRegistrar();
-        dr.setContactNumber("00 0000-0000");
+        dr.addContactNumber("00 0000-0000");
         dr.setUsername("Madoka");
         dr.setEmail("madoka@yahoo.com");
         dr.setFullName("Madoka Kaname");
@@ -33,7 +35,12 @@ public class DeathRegistrarTest extends TestHelper
     {
         DeathRegistrar dr = em.find(DeathRegistrar.class, 2L);
         assertNotNull(dr);
-        assertEquals(dr.getContactNumber(), "123-456-7890");
+        dr.getContactNumbers().stream().forEach(number -> {
+            MatcherAssert.assertThat(number, CoreMatchers.anyOf(
+                    CoreMatchers.equalTo("123-456-7890"),
+                    CoreMatchers.equalTo("+48 987 654 321")
+            ));
+        });
         assertEquals(dr.getEmail(), "jakubfarobec@gmail.com");
         assertEquals(dr.getFullName(), "Jakub Farobek");
         assertEquals(dr.getUsername(), "Jakub");

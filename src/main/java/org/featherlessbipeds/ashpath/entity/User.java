@@ -1,6 +1,7 @@
 package org.featherlessbipeds.ashpath.entity;
 
 import jakarta.persistence.*;
+import java.util.Objects;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,4 +23,33 @@ public abstract class User
 
     @Column(name = "password_hash")
     private String passwordHash;
+
+    @Override
+    public int hashCode()
+    {
+        int hash = 5;
+        hash = 41 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (this == obj)
+        {
+            return true;
+        }
+        if (obj == null)
+        {
+            return false;
+        }
+        if (getClass() != obj.getClass())
+        {
+            return false;
+        }
+        final User other = (User) obj;
+        return Objects.equals(this.id, other.id);
+    }
+    
+    
 }

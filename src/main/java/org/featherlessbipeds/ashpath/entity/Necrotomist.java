@@ -1,6 +1,5 @@
 package org.featherlessbipeds.ashpath.entity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,6 +11,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -42,11 +42,11 @@ public class Necrotomist
             joinColumns = @JoinColumn(name = "necrotomist_id"),
             inverseJoinColumns = @JoinColumn(name = "cremation_queue_id")
     )
-    private Set<CremationQueue> cremationQueueSet;
+    private Set<CremationQueue> cremationQueueSet = new HashSet<>();
 
     @Setter(AccessLevel.NONE)
     @OneToMany(mappedBy = "necrotomist")
-    private Set<Deceased> deceasedSet;
+    private Set<Deceased> deceasedSet = new HashSet<>();
 
     public void addCremationQueue(CremationQueue queue)
     {
@@ -68,4 +68,30 @@ public class Necrotomist
         deceased.setNecrotomist(this);
     }
 
+    @Override
+    public int hashCode()
+    {
+        int hash = 5;
+        hash = 89 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (this == obj)
+        {
+            return true;
+        }
+        if (obj == null)
+        {
+            return false;
+        }
+        if (getClass() != obj.getClass())
+        {
+            return false;
+        }
+        final Necrotomist other = (Necrotomist) obj;
+        return Objects.equals(this.id, other.id);
+    }
 }

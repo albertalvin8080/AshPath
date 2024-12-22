@@ -1,5 +1,6 @@
 package org.featherlessbipeds.ashpath;
 
+import java.sql.Timestamp;
 import org.featherlessbipeds.ashpath.utils.TestHelper;
 import org.featherlessbipeds.ashpath.entity.CremationQueue;
 import org.junit.Test;
@@ -28,7 +29,7 @@ public class CremationQueueTest extends TestHelper
     {
         CremationQueue persistedCq = em.find(CremationQueue.class, 1L);
         assertNotNull(persistedCq);
-        assertNotNull(persistedCq.getEnteredDate());
+        assertEquals(persistedCq.getEnteredDate(), Timestamp.valueOf("2023-12-09 01:00:00"));
     }
 
     @Test

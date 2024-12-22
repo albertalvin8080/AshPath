@@ -1,30 +1,43 @@
 package org.featherlessbipeds.ashpath.entity;
 
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@DiscriminatorValue(value = "D_REGISTRAR")
 @Table(name = "death_registrar")
+@DiscriminatorValue(value = "D_REGISTRAR")
+@PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "user_id")
 // The guy who uses the system daily to register/unregister things.
 public class DeathRegistrar extends User
 {
     @Column(name = "full_name", nullable = false)
     private String fullName;
 
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(
+        name = "death_registrar_contact_numbers", 
+        joinColumns = @JoinColumn(name = "user_id")
+    )
     @Column(name = "contact_number", nullable = false)
-    private String contactNumber;
+    @Setter(AccessLevel.NONE)
+    private Set<String> contactNumbers = new HashSet<>();
 
     @Column(name = "email", unique = true, nullable = false)
     private String email;
@@ -36,4 +49,9 @@ public class DeathRegistrar extends User
     @Column(name = "last_activity_date", nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastActivityDate;
+    
+    public void addContactNumber(String number)
+    {
+        contactNumbers.add(number);
+    }
 }

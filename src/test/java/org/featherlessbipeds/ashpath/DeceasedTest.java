@@ -1,5 +1,11 @@
 package org.featherlessbipeds.ashpath;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,10 +18,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 
-public class DeceasedTest extends TestHelper {
-
+public class DeceasedTest extends TestHelper
+{
     @Test
-    public void persistDeceased_AddsDeceasedToDb_WhenSuccessful() {
+    public void persistDeceased_AddsDeceasedToDb_WhenSuccessful()
+    {
         Grave grave4 = new Grave();
         grave4.setLocation("Tokyo");
         em.persist(grave4);
@@ -43,25 +50,11 @@ public class DeceasedTest extends TestHelper {
         em.flush();
 
         assertNotNull(deceased.getId());
-        // Deceased persistedDeceased = em.find(Deceased.class, deceased.getId());
-        // assertNotNull(persistedDeceased);
-        // assertEquals(deceased.getName(), persistedDeceased.getName());
-        // assertEquals(deceased.getCauseOfDeath(), persistedDeceased.getCauseOfDeath());
-        // assertEquals(deceased.getBirthDate(), persistedDeceased.getBirthDate());
-        // assertEquals(deceased.getDeathDate(), persistedDeceased.getDeathDate());
-
-        // assertNotNull(persistedDeceased.getGrave());
-        // assertEquals(grave.getId(), persistedDeceased.getGrave().getId());
-
-        // assertNotNull(persistedDeceased.getCremationQueue());
-        // assertEquals(cremationQueue.getId(), persistedDeceased.getCremationQueue().getId());
-
-        // assertNotNull(persistedDeceased.getNecrotomist());
-        // assertEquals(necrotomist.getId(), persistedDeceased.getNecrotomist().getId());
     }
 
     @Test
-    public void findDeceased_ReturnsDeceased_WhenSuccessful() throws ParseException {
+    public void findDeceased_ReturnsDeceased_WhenSuccessful() throws ParseException
+    {
         Deceased deceased = em.find(Deceased.class, 1L);
         assertNotNull(deceased);
         assertEquals("Helmuth Voss", deceased.getName());
@@ -75,5 +68,17 @@ public class DeceasedTest extends TestHelper {
 
         assertEquals(Long.valueOf(1), deceased.getCremationQueue().getId());
         assertEquals(Long.valueOf(1), deceased.getNecrotomist().getId());
+    }
+    
+    @Test // TEMPORARY
+    public void testing_image() throws FileNotFoundException, IOException
+    {
+        Deceased d = em.find(Deceased.class, 4L);
+        byte[] img = d.getDeceasedImage().getImg();
+        try(FileOutputStream fos = new FileOutputStream(new File("test.jpg")))
+        {
+            fos.write(img);
+            fos.flush();
+        }
     }
 }

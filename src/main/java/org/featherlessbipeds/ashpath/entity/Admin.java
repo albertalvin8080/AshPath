@@ -5,6 +5,7 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,8 +13,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@DiscriminatorValue("ADMIN")
 @Table(name = "app_admin")
+@DiscriminatorValue("ADMIN")
+//@PrimaryKeyJoinColumn(name = "admin_id", referencedColumnName = "user_id") // doesnt work
+@PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "user_id") // works
 public class Admin extends User
 {
     @Enumerated(EnumType.STRING)
