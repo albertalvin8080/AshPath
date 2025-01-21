@@ -1,24 +1,70 @@
 package org.featherlessbipeds.ashpath.second_task;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import org.featherlessbipeds.ashpath.entity.CremationQueue;
+import jakarta.persistence.CacheRetrieveMode;
+import jakarta.persistence.TypedQuery;
+import java.util.HashMap;
+import java.util.Map;
 import org.featherlessbipeds.ashpath.entity.Deceased;
-import org.featherlessbipeds.ashpath.entity.Grave;
-import org.featherlessbipeds.ashpath.entity.Necrotomist;
 import org.featherlessbipeds.ashpath.utils.TestHelper;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import org.junit.Test;
 
 public class DeceasedTest extends TestHelper
 {
+    @Test
+    public void updateDeceased()
+    {
+        var newName = "newName";
+        var newCauseOfDeath = "newCause";
+        
+        Long id = 5L;
+        Deceased dc = em.find(Deceased.class, id);
+        dc.setName(newName);
+        dc.setCauseOfDeath(newCauseOfDeath);
+        
+        em.flush();
+        
+        String jpql = "SELECT d FROM Deceased d WHERE d.id = ?1";
+        TypedQuery<Deceased> query = em.createQuery(jpql, Deceased.class);
+        query.setHint("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+        query.setParameter(1, id);
+        dc = query.getSingleResult();
+        
+        assertEquals(dc.getName(), newName);
+        assertEquals(dc.getCauseOfDeath(), newCauseOfDeath);
+    }
     
+    @Test
+    @SuppressWarnings("UnusedAssignment")
+    public void updateDeceasedMerge()
+    {
+        var newName = "updatedName";
+        var newCauseOfDeath = "updatedCause";
+        
+        Long id = 5L;
+        Deceased dc = em.find(Deceased.class, id);
+        dc.setName(newName);
+        dc.setCauseOfDeath(newCauseOfDeath);
+        
+        em.clear();
+        dc = (Deceased) em.merge(dc);
+        
+        Map<String, Object> properties = new HashMap<>();
+        properties.put("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+        dc = em.find(Deceased.class, id, properties);
+        
+        assertEquals(dc.getName(), newName);
+        assertEquals(dc.getCauseOfDeath(), newCauseOfDeath);
+    }
+    
+    @Test
+    public void removeDeceased()
+    {
+        Long id = 6L;
+        Deceased dc = em.find(Deceased.class, id);
+        em.remove(dc);
+        dc = em.find(Deceased.class, id);
+        assertNull(dc);
+    }
 }

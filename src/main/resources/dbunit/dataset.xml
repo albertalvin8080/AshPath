@@ -115,5 +115,26 @@
         last_activity_date="2023-11-20 15:45:00">
     </death_registrar>
     
+    <!-- Deceased table -->
+    <deceased
+        deceased_name="Marconha"
+        deceased_cause_of_death="Overdose"
+        deceased_birth_date="1990-02-10 00:00:00"
+        deceased_death_date="2025-01-05 12:00:00"
+        grave_id="1"
+        cremation_queue_id="1"
+        necrotomist_id="1"
+    />
+    
+    <deceased
+        deceased_name="Donald McBurger"
+        deceased_cause_of_death="Infarction"
+        deceased_birth_date="1980-08-14 00:00:00"
+        deceased_death_date="2024-05-25 12:00:00"
+        grave_id="2"
+        cremation_queue_id="2"
+        necrotomist_id="2"
+    />
+    
 </dataset>
 
