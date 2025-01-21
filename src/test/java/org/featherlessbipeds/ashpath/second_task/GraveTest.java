@@ -8,5 +8,19 @@ import org.junit.Test;
 
 public class GraveTest extends TestHelper
 {
+    @Test
+    public void update()
+    {
+    }
 
+    @Test
+    @SuppressWarnings("UnusedAssignment")
+    public void updateMerge()
+    {
+    }
+
+    @Test
+    public void remove()
+    {
+    }
 }

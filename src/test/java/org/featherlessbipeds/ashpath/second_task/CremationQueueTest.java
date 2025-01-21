@@ -11,5 +11,19 @@ import static org.junit.Assert.*;
 
 public class CremationQueueTest extends TestHelper
 {
-    
+    @Test
+    public void update()
+    {
+    }
+
+    @Test
+    @SuppressWarnings("UnusedAssignment")
+    public void updateMerge()
+    {
+    }
+
+    @Test
+    public void remove()
+    {
+    }
 }

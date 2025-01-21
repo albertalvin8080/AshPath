@@ -13,5 +13,19 @@ import org.junit.Test;
 
 public class NecrotomistTest extends TestHelper
 {
-    
+   @Test
+    public void update()
+    {
+    }
+
+    @Test
+    @SuppressWarnings("UnusedAssignment")
+    public void updateMerge()
+    {
+    }
+
+    @Test
+    public void remove()
+    {
+    }
 }
