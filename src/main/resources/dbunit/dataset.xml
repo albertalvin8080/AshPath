@@ -31,7 +31,7 @@
         necrotomist_name="Ibere Tenori"
         necrotomist_specialization="Forensic Investigation"
     />
-
+    
     <!-- Cremation Queue table -->
     <cremation_queue entered_date="2023-12-09 01:00:00" />
     <cremation_queue entered_date="2023-10-01 12:00:00" />
@@ -134,6 +134,16 @@
         grave_id="2"
         cremation_queue_id="2"
         necrotomist_id="2"
+    />
+    
+     <!-- Necrotomist table -->
+     <necrotomist
+        necrotomist_name="Mohammed"
+        necrotomist_specialization="Autopsy Technician"
+    />
+    <necrotomist
+        necrotomist_name="Izac"
+        necrotomist_specialization="Forensic Analisys"
     />
     
 </dataset>
