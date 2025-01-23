@@ -10,6 +10,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import org.junit.Test;
 
+import static org.featherlessbipeds.ashpath.utils.IdsUtil.*;
+
 public class DeceasedTest extends TestHelper
 {
     @Test
@@ -18,7 +20,7 @@ public class DeceasedTest extends TestHelper
         var newName = "newName";
         var newCauseOfDeath = "newCause";
         
-        Long id = 5L;
+        Long id = DC_ID_5;
         Deceased dc = em.find(Deceased.class, id);
         dc.setName(newName);
         dc.setCauseOfDeath(newCauseOfDeath);
@@ -42,7 +44,7 @@ public class DeceasedTest extends TestHelper
         var newName = "updatedName";
         var newCauseOfDeath = "updatedCause";
         
-        Long id = 5L;
+        Long id = DC_ID_5;
         Deceased dc = em.find(Deceased.class, id);
         dc.setName(newName);
         dc.setCauseOfDeath(newCauseOfDeath);
@@ -61,7 +63,7 @@ public class DeceasedTest extends TestHelper
     @Test
     public void removeDeceased()
     {
-        Long id = 6L;
+        Long id = DC_ID_6;
         Deceased dc = em.find(Deceased.class, id);
         em.remove(dc);
         dc = em.find(Deceased.class, id);
