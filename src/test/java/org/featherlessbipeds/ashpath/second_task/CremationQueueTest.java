@@ -1,29 +1,78 @@
 package org.featherlessbipeds.ashpath.second_task;
 
-import java.sql.Timestamp;
+import jakarta.persistence.CacheRetrieveMode;
+import jakarta.persistence.TypedQuery;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import org.featherlessbipeds.ashpath.utils.TestHelper;
 import org.featherlessbipeds.ashpath.entity.CremationQueue;
 import org.junit.Test;
 
-import java.util.Date;
-
+import static org.featherlessbipeds.ashpath.utils.IdsUtil.*;
 import static org.junit.Assert.*;
 
 public class CremationQueueTest extends TestHelper
 {
     @Test
-    public void update()
+    public void testUpdate() throws ParseException
     {
+        //final Long id = 3L;
+        CremationQueue cremationQueue = em.find(CremationQueue.class, CD_ID_3);
+        assertNotNull("CremationQueue not found", cremationQueue);
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date newDate = dateFormat.parse("2025-01-07");
+        cremationQueue.setEnteredDate(newDate);
+        em.flush();
+
+        String jpql = "SELECT c FROM CremationQueue c WHERE c.id = :id";
+        TypedQuery<CremationQueue> query = em.createQuery(jpql, CremationQueue.class);
+        query.setHint("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+        query.setParameter("id", CD_ID_3);
+        CremationQueue updatedCremationQueue = query.getSingleResult();
+
+        assertNotNull("EnteredDate should not be null for ID: "+CD_ID_3, updatedCremationQueue.getEnteredDate());
+        assertEquals("EnteredDate mismatch for ID: "+CD_ID_3, newDate, updatedCremationQueue.getEnteredDate());
     }
 
     @Test
-    @SuppressWarnings("UnusedAssignment")
-    public void updateMerge()
-    {
+    public void testUpdateWithMerge() throws ParseException {
+
+        CremationQueue cremationQueue = em.find(CremationQueue.class, CD_ID_4);
+        assertNotNull("CremationQueue not found for ID: "+CD_ID_4, cremationQueue);
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date newDate = dateFormat.parse("2025-01-07");
+        cremationQueue.setEnteredDate(newDate);
+        em.clear();
+
+        em.merge(cremationQueue);
+        em.flush();
+
+        Map<String, Object> properties = new HashMap<>();
+        properties.put("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+        CremationQueue updatedCremationQueue = em.find(CremationQueue.class, CD_ID_4, properties);
+
+        assertNotNull("EnteredDate should not be null for ID: "+CD_ID_4, updatedCremationQueue.getEnteredDate());
+        assertEquals("EnteredDate mismatch for ID: "+CD_ID_4, newDate, updatedCremationQueue.getEnteredDate());
     }
 
     @Test
-    public void remove()
+    public void testRemove()
     {
+        CremationQueue cremationQueue = em.find(CremationQueue.class, CD_ID_5);
+        assertNotNull("CremationQueue not found for ID: "+CD_ID_5, cremationQueue);
+
+        em.remove(cremationQueue);
+        em.flush();
+
+        Map<String, Object> properties = new HashMap<>();
+        properties.put("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
+        CremationQueue deletedCremationQueue = em.find(CremationQueue.class, CD_ID_5, properties);
+
+        assertNull("CremationQueue should be null after removal", deletedCremationQueue);
     }
 }
