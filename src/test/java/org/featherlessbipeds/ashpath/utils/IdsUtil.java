@@ -13,4 +13,12 @@ public class IdsUtil {
     public static final Long DR_ID_6 = 6L;
     public static final Long ADMIN_ID_4 = 4L;
     public static final Long ADMIN_ID_7 = 7L;
+
+    /* Deceased ID's*/
+    public static final Long DC_ID_5 = 5L;
+    public static final Long DC_ID_6 = 6L;
+
+    /* Necrotomist ID's*/
+    public static final Long NC_ID_3 = 3L;
+    public static final Long NC_ID_4 = 4L;
 }
