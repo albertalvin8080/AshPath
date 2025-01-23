@@ -16,6 +16,7 @@ import static org.junit.Assert.*;
 
 public class CremationQueueTest extends TestHelper
 {
+
     @Test
     public void testUpdate() throws ParseException
     {
@@ -34,15 +35,15 @@ public class CremationQueueTest extends TestHelper
         query.setParameter("id", CQ_ID_3);
         CremationQueue updatedCremationQueue = query.getSingleResult();
 
-        assertNotNull("EnteredDate should not be null for ID: "+CQ_ID_3, updatedCremationQueue.getEnteredDate());
-        assertEquals("EnteredDate mismatch for ID: "+CQ_ID_3, newDate, updatedCremationQueue.getEnteredDate());
+        assertNotNull("EnteredDate should not be null for ID: " + CQ_ID_3, updatedCremationQueue.getEnteredDate());
+        assertEquals("EnteredDate mismatch for ID: " + CQ_ID_3, newDate, updatedCremationQueue.getEnteredDate());
     }
 
     @Test
-    public void testUpdateWithMerge() throws ParseException {
-
+    public void testUpdateWithMerge() throws ParseException
+    {
         CremationQueue cremationQueue = em.find(CremationQueue.class, CQ_ID_4);
-        assertNotNull("CremationQueue not found for ID: "+CQ_ID_4, cremationQueue);
+        assertNotNull("CremationQueue not found for ID: " + CQ_ID_4, cremationQueue);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date newDate = dateFormat.parse("2025-01-07");
@@ -56,15 +57,15 @@ public class CremationQueueTest extends TestHelper
         properties.put("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
         CremationQueue updatedCremationQueue = em.find(CremationQueue.class, CQ_ID_4, properties);
 
-        assertNotNull("EnteredDate should not be null for ID: "+CQ_ID_4, updatedCremationQueue.getEnteredDate());
-        assertEquals("EnteredDate mismatch for ID: "+CQ_ID_4, newDate, updatedCremationQueue.getEnteredDate());
+        assertNotNull("EnteredDate should not be null for ID: " + CQ_ID_4, updatedCremationQueue.getEnteredDate());
+        assertEquals("EnteredDate mismatch for ID: " + CQ_ID_4, newDate, updatedCremationQueue.getEnteredDate());
     }
 
     @Test
     public void testRemove()
     {
         CremationQueue cremationQueue = em.find(CremationQueue.class, CQ_ID_5);
-        assertNotNull("CremationQueue not found for ID: "+CQ_ID_5, cremationQueue);
+        assertNotNull("CremationQueue not found for ID: " + CQ_ID_5, cremationQueue);
 
         em.remove(cremationQueue);
         em.flush();

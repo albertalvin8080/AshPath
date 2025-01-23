@@ -10,6 +10,7 @@ import org.featherlessbipeds.ashpath.entity.AdminRole;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static org.featherlessbipeds.ashpath.utils.IdsUtil.*;
 
 public class AdminTest extends TestHelper
 {
@@ -20,7 +21,7 @@ public class AdminTest extends TestHelper
         var newUsername = "Strokovsky";
         var newPasswordHash = "AAAAA";
         
-        Long id = 7L;
+        Long id = ADMIN_ID_7;
         Admin adm = em.find(Admin.class, id);
         adm.setRole(newRole);
         adm.setUsername(newUsername);
@@ -47,7 +48,7 @@ public class AdminTest extends TestHelper
         var newUsername = "Rinkovsky";
         var newPasswordHash = "BBBBB";
         
-        Long id = 7L;
+        Long id = ADMIN_ID_7;
         Admin adm = em.find(Admin.class, id);
         adm.setRole(newRole);
         adm.setUsername(newUsername);
@@ -68,7 +69,7 @@ public class AdminTest extends TestHelper
     @Test
     public void removeAdmin()
     {
-        Long id = 4L;
+        Long id = ADMIN_ID_4;
         Admin adm = em.find(Admin.class, id);
         em.remove(adm);
         adm = em.find(Admin.class, id);

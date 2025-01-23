@@ -9,6 +9,8 @@ import org.featherlessbipeds.ashpath.entity.DeathRegistrar;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import static org.featherlessbipeds.ashpath.utils.IdsUtil.*;
+
 public class DeathRegistrarTest extends TestHelper
 {
     @Test
@@ -17,7 +19,7 @@ public class DeathRegistrarTest extends TestHelper
         var newEmail = "newemail@mail.com";
         var newFullName = "Never Say Ever";
         
-        Long id = 5L;
+        Long id = DR_ID_5;
         DeathRegistrar dr = em.find(DeathRegistrar.class, id);
         dr.setEmail(newEmail);
         dr.setFullName(newFullName);
@@ -41,7 +43,7 @@ public class DeathRegistrarTest extends TestHelper
         var newEmail = "somemail@mail.com";
         var newFullName = "Help Me";
         
-        Long id = 5L;
+        Long id = DR_ID_5;
         DeathRegistrar dr = em.find(DeathRegistrar.class, id);
         dr.setEmail(newEmail);
         dr.setFullName(newFullName);
@@ -60,7 +62,7 @@ public class DeathRegistrarTest extends TestHelper
     @Test
     public void removeDeathRegistrar()
     {
-        Long id = 6L;
+        Long id = DR_ID_6;
         DeathRegistrar dr = em.find(DeathRegistrar.class, id);
         em.remove(dr);
         dr = em.find(DeathRegistrar.class, id);
