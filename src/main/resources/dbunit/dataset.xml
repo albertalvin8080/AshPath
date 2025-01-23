@@ -145,6 +145,16 @@
         necrotomist_name="Izac"
         necrotomist_specialization="Forensic Analisys"
     />
-    
+
+    <!-- Cremation Queue table -->
+    <cremation_queue entered_date="2025-01-09 01:00:00" />
+    <cremation_queue entered_date="2025-01-08 12:00:00" />
+    <cremation_queue entered_date="2025-01-07 12:30:00" />
+
+    <necrotomist_cremation_queue necrotomist_id="1" cremation_queue_id="3"/>
+    <necrotomist_cremation_queue necrotomist_id="1" cremation_queue_id="4"/>
+    <necrotomist_cremation_queue necrotomist_id="1" cremation_queue_id="5"/>
+
+
 </dataset>
 
