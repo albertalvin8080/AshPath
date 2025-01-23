@@ -15,6 +15,8 @@ import org.hamcrest.MatcherAssert;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import static org.featherlessbipeds.ashpath.utils.IdsUtil.*;
+
 public class NecrotomistTest extends TestHelper
 {
    @Test
@@ -23,7 +25,7 @@ public class NecrotomistTest extends TestHelper
         var newName = "Khabib Nurmagomedov";
         var newSpecialization = "Mata Leão";
         
-        Long id = 3L;
+        Long id = NC_ID_3;
         Necrotomist necro = em.find(Necrotomist.class, id);
         necro.setName(newName);
         necro.setSpecialization(newSpecialization);
@@ -46,7 +48,7 @@ public class NecrotomistTest extends TestHelper
         var newName = "Tony Hawk";
         var newSpecialization = "Fakie to fakie 900";
         
-        Long id = 4L;
+        Long id = NC_ID_3;
         Necrotomist necro = em.find(Necrotomist.class, id);
         necro.setName(newName);
         necro.setSpecialization(newSpecialization);
@@ -65,7 +67,7 @@ public class NecrotomistTest extends TestHelper
     @Test
     public void removeNecrotomist()
     {
-        Long id = 4L;
+        Long id = NC_ID_4;
         Necrotomist necro = em.find(Necrotomist.class, id);
         em.remove(necro);
         necro = em.find(Necrotomist.class,id);
