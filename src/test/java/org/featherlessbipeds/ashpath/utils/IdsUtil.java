@@ -21,4 +21,9 @@ public class IdsUtil {
     /* Necrotomist ID's*/
     public static final Long NC_ID_3 = 3L;
     public static final Long NC_ID_4 = 4L;
+    
+    /* Grave ID's*/
+    public static final Long GV_ID_4 = 4L;
+    public static final Long GV_ID_5 = 5L;
+    public static final Long GV_ID_6 = 6L;
 }

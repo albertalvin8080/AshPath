@@ -171,5 +171,9 @@
     <!-- id 5 -->
     <necrotomist_cremation_queue necrotomist_id="4" cremation_queue_id="5"/>
 
+    <!-- Grave table -->
+    <grave grave_location="Maceio" />
+    <grave grave_location="Ibura" />
+    <grave grave_location="Salvador" />
 </dataset>
 
