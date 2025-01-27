@@ -128,11 +128,6 @@
         necrotomist_specialization="Forensic Analisys"
     />
     
-    <!-- id 4 -->
-    <grave grave_location="Berlin" />
-    <!-- id 5 -->
-    <grave grave_location="Nosramus" />
-    
     <!-- Deceased table -->
     <!-- id 5 -->
     <deceased
@@ -172,8 +167,11 @@
     <necrotomist_cremation_queue necrotomist_id="4" cremation_queue_id="5"/>
 
     <!-- Grave table -->
+    <!-- id 4 -->
+    <grave grave_location="Berlin" />
+    <!-- id 5 -->
+    <grave grave_location="Nosramus" />
+    <!-- id 6 -->
     <grave grave_location="Maceio" />
-    <grave grave_location="Ibura" />
-    <grave grave_location="Salvador" />
 </dataset>
 
