@@ -7,11 +7,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "app_admin")
 @DiscriminatorValue("ADMIN")
@@ -22,4 +18,12 @@ public class Admin extends User
     @Enumerated(EnumType.STRING)
     @Column(name = "admin_role", nullable = false)
     private AdminRole role;
+
+    public AdminRole getRole() {
+        return role;
+    }
+
+    public void setRole(AdminRole role) {
+        this.role = role;
+    }
 }

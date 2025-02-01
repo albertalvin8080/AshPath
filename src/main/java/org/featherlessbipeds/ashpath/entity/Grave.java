@@ -9,13 +9,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.util.Objects;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Table(name = "grave")
-@Getter
-@Setter
 public class Grave {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,4 +50,30 @@ public class Grave {
         final Grave other = (Grave) obj;
         return Objects.equals(this.id, other.id);
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setDeceased(Deceased deceased) {
+        this.deceased = deceased;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public Deceased getDeceased() {
+        return deceased;
+    }
+    
+    
 }

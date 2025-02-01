@@ -13,12 +13,7 @@ import jakarta.persistence.Table;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "necrotomist")
 // The guy who performs autopsies and stuff
@@ -35,7 +30,6 @@ public class Necrotomist
     @Column(name = "necrotomist_specialization", nullable = false)
     private String specialization; // ex: "Autopsy technician"
 
-    @Setter(AccessLevel.NONE)
     @ManyToMany
     @JoinTable(
             name = "necrotomist_cremation_queue",
@@ -44,7 +38,6 @@ public class Necrotomist
     )
     private Set<CremationQueue> cremationQueueSet = new HashSet<>();
 
-    @Setter(AccessLevel.NONE)
     @OneToMany(mappedBy = "necrotomist")
     private Set<Deceased> deceasedSet = new HashSet<>();
 
@@ -94,4 +87,40 @@ public class Necrotomist
         final Necrotomist other = (Necrotomist) obj;
         return Objects.equals(this.id, other.id);
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
+    }
+    
+    
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSpecialization() {
+        return specialization;
+    }
+
+    public Set<CremationQueue> getCremationQueueSet() {
+        return cremationQueueSet;
+    }
+
+    public Set<Deceased> getDeceasedSet() {
+        return deceasedSet;
+    }
+    
+    
 }

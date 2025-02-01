@@ -14,12 +14,7 @@ import jakarta.persistence.TemporalType;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "death_registrar")
 @DiscriminatorValue(value = "D_REGISTRAR")
@@ -36,7 +31,6 @@ public class DeathRegistrar extends User
         joinColumns = @JoinColumn(name = "user_id")
     )
     @Column(name = "contact_number", nullable = false)
-    @Setter(AccessLevel.NONE)
     private Set<String> contactNumbers = new HashSet<>();
 
     @Column(name = "email", unique = true, nullable = false)
@@ -54,4 +48,44 @@ public class DeathRegistrar extends User
     {
         contactNumbers.add(number);
     }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public void setLastActivityDate(Date lastActivityDate) {
+        this.lastActivityDate = lastActivityDate;
+    }
+    
+    
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public Set<String> getContactNumbers() {
+        return contactNumbers;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Date getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public Date getLastActivityDate() {
+        return lastActivityDate;
+    }
+    
+    
 }

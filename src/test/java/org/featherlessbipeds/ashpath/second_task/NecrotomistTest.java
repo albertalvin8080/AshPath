@@ -72,6 +72,5 @@ public class NecrotomistTest extends TestHelper
         em.remove(necro);
         necro = em.find(Necrotomist.class,id);
         assertNull(necro);
-                
     }
 }

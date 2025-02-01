@@ -17,13 +17,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-import lombok.AccessLevel;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Setter
-@Getter
 @Entity
 @Table(name = "cremation_queue")
 public class CremationQueue
@@ -33,18 +27,15 @@ public class CremationQueue
     @Column(name = "cremation_queue_id")
     private Long id;
 
-    @Setter(AccessLevel.NONE)
     @OneToMany(mappedBy = "cremationQueue", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Deceased> deceasedSet = new HashSet<>();
 
-    @Setter(AccessLevel.NONE)
     @ManyToMany(mappedBy = "cremationQueueSet", cascade =
     {
         CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH
     }, fetch = FetchType.LAZY)
     private Set<Necrotomist> necrotomistSet = new HashSet<>();
 
-    @Setter
     @Column(name = "entered_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date enteredDate;
@@ -75,4 +66,32 @@ public class CremationQueue
         final CremationQueue other = (CremationQueue) obj;
         return Objects.equals(this.id, other.id);
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setEnteredDate(Date enteredDate) {
+        this.enteredDate = enteredDate;
+    }
+    
+    
+
+    public Long getId() {
+        return id;
+    }
+
+    public Set<Deceased> getDeceasedSet() {
+        return deceasedSet;
+    }
+
+    public Set<Necrotomist> getNecrotomistSet() {
+        return necrotomistSet;
+    }
+
+    public Date getEnteredDate() {
+        return enteredDate;
+    }
+    
+    
 }

@@ -19,11 +19,7 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.util.Date;
 import java.util.Objects;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "deceased")
 public class Deceased
@@ -89,4 +85,80 @@ public class Deceased
         final Deceased other = (Deceased) obj;
         return Objects.equals(this.id, other.id);
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setDeceasedImage(DeceasedImage deceasedImage) {
+        this.deceasedImage = deceasedImage;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCauseOfDeath(String causeOfDeath) {
+        this.causeOfDeath = causeOfDeath;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public void setDeathDate(Date deathDate) {
+        this.deathDate = deathDate;
+    }
+
+    public void setGrave(Grave grave) {
+        this.grave = grave;
+    }
+
+    public void setCremationQueue(CremationQueue cremationQueue) {
+        this.cremationQueue = cremationQueue;
+    }
+
+    public void setNecrotomist(Necrotomist necrotomist) {
+        this.necrotomist = necrotomist;
+    }
+    
+    
+
+    public Long getId() {
+        return id;
+    }
+
+    public DeceasedImage getDeceasedImage() {
+        return deceasedImage;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCauseOfDeath() {
+        return causeOfDeath;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public Date getDeathDate() {
+        return deathDate;
+    }
+
+    public Grave getGrave() {
+        return grave;
+    }
+
+    public CremationQueue getCremationQueue() {
+        return cremationQueue;
+    }
+
+    public Necrotomist getNecrotomist() {
+        return necrotomist;
+    }
+    
+    
 }
