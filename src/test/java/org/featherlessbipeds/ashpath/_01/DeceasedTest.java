@@ -1,4 +1,4 @@
-package org.featherlessbipeds.ashpath.first_task;
+package org.featherlessbipeds.ashpath._01;
 
 import java.io.File;
 import java.io.FileNotFoundException;

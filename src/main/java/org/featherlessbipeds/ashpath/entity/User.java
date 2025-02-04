@@ -17,8 +17,8 @@ public abstract class User
     @Column(name = "username")
     private String username;
 
-    @Column(name = "password_hash")
-    private String passwordHash;
+    @Column(name = "password")
+    private String password;
 
     @Override
     public int hashCode()
@@ -56,7 +56,7 @@ public abstract class User
     }
 
     public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+        this.password = passwordHash;
     }
     
     
@@ -70,7 +70,7 @@ public abstract class User
     }
 
     public String getPasswordHash() {
-        return passwordHash;
+        return password;
     }
     
     

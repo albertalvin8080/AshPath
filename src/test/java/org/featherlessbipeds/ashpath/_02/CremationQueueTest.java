@@ -1,4 +1,4 @@
-package org.featherlessbipeds.ashpath.second_task;
+package org.featherlessbipeds.ashpath._02;
 
 import jakarta.persistence.CacheRetrieveMode;
 import jakarta.persistence.TypedQuery;

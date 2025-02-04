@@ -1,4 +1,4 @@
-package org.featherlessbipeds.ashpath.first_task;
+package org.featherlessbipeds.ashpath._01;
 
 import org.featherlessbipeds.ashpath.utils.TestHelper;
 import org.featherlessbipeds.ashpath.entity.Admin;

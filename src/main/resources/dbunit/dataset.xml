@@ -2,9 +2,9 @@
 <dataset>
     <!-- ======== FIRST TASK ======== -->
     <!-- Users table (abstract base class entries) -->
-    <app_user username="Johan" password_hash="abcde" user_type="ADMIN" /> <!-- user_id==1 -->
-    <app_user username="Jakub" password_hash="12345abcde" user_type="D_REGISTRAR" /> <!-- user_id==2 -->
-    <app_user username="mononoke" password_hash="hashhashhash" user_type="ADMIN" /> <!-- user_id==3 -->
+    <app_user username="Johan" password="abcde" user_type="ADMIN" /> <!-- user_id==1 -->
+    <app_user username="Jakub" password="12345abcde" user_type="D_REGISTRAR" /> <!-- user_id==2 -->
+    <app_user username="mononoke" password="hashhashhash" user_type="ADMIN" /> <!-- user_id==3 -->
 
     <!-- Admin table -->
     <app_admin user_id="1" admin_role="SYSTEM_ADMIN" />
@@ -91,10 +91,10 @@
     <!-- ======== SECOND TASK ======== -->
     
     <!-- Users table (abstract base class entries) -->
-    <app_user username="Emil" password_hash="123" user_type="ADMIN" /> <!-- user_id==4 -->
-    <app_user username="Sebe" password_hash="123" user_type="D_REGISTRAR" /> <!-- user_id==5 -->
-    <app_user username="Mark" password_hash="123" user_type="D_REGISTRAR" /> <!-- user_id==6 -->
-    <app_user username="Rodolfo" password_hash="123" user_type="ADMIN" /> <!-- user_id==7 -->
+    <app_user username="Emil" password="123" user_type="ADMIN" /> <!-- user_id==4 -->
+    <app_user username="Sebe" password="123" user_type="D_REGISTRAR" /> <!-- user_id==5 -->
+    <app_user username="Mark" password="123" user_type="D_REGISTRAR" /> <!-- user_id==6 -->
+    <app_user username="Rodolfo" password="123" user_type="ADMIN" /> <!-- user_id==7 -->
 
     <!-- Admin table -->
     <app_admin user_id="4" admin_role="USER_ADMIN" />
