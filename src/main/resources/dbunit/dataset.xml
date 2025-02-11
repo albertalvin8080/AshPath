@@ -19,7 +19,9 @@
         last_activity_date="2023-11-20 15:45:00">
     </death_registrar>
     
+    <!-- id 1 -->
     <death_registrar_contact_numbers user_id="2" contact_number="123-456-7890" />
+    <!-- id 2 -->
     <death_registrar_contact_numbers user_id="2" contact_number="+48 987 654 321" />
 
     <!-- Necrotomist table -->
@@ -184,11 +186,13 @@
     <app_user username="Ciaran" password="mypass789" user_type="D_REGISTRAR" /> <!-- user_id==13 -->
     <app_user username="Velka" password="qwerty" user_type="ADMIN" /> <!-- user_id==14 -->
     <app_user username="Shiva" password="admin123" user_type="D_REGISTRAR" /> <!-- user_id==15 -->
+    <app_user username="Gael" password="admin123" user_type="ADMIN" /> <!-- user_id==16 -->
 
     <!-- Admin table -->
     <app_admin user_id="8" admin_role="SYSTEM_ADMIN" />
     <app_admin user_id="11" admin_role="USER_ADMIN" />
     <app_admin user_id="14" admin_role="SYSTEM_ADMIN" />
+    <app_admin user_id="16" admin_role="CONTENT_ADMIN" />
 
     <!-- Death Registrar table -->
     <death_registrar user_id="9" full_name="Lucatiel of Mirrah" email="lucatiel.mirrah@gmail.com"
@@ -199,15 +203,15 @@
                      registration_date="2024-11-10 08:45:00" last_activity_date="2025-01-25 17:15:00">
     </death_registrar>
 
-    <death_registrar user_id="12" full_name="Knight Artorias" email="abysswalker@gmail.com"
+    <death_registrar user_id="12" full_name="Knight Artorias" email="abysswalker@outlook.com"
                      registration_date="2025-01-05 10:15:00" last_activity_date="2025-02-05 12:30:00">
     </death_registrar>
 
-    <death_registrar user_id="13" full_name="Ciaran the Lord’s Blade" email="lordsblade@gmail.com"
+    <death_registrar user_id="13" full_name="Ciaran the Lord’s Blade" email="lordsblade@yahoo.com"
                      registration_date="2025-01-10 14:20:00" last_activity_date="2025-02-07 09:45:00">
     </death_registrar>
 
-    <death_registrar user_id="15" full_name="Shiva of the East" email="shiva.east@gmail.com"
+    <death_registrar user_id="15" full_name="Shiva of the East" email="shiva.east@yahoo.com"
                      registration_date="2025-01-15 07:30:00" last_activity_date="2025-02-10 13:00:00">
     </death_registrar>
 
@@ -253,6 +257,11 @@
     <deceased deceased_name="Abyss Watcher" deceased_cause_of_death="Electrocution"
               deceased_birth_date="1990-03-18 00:00:00" deceased_death_date="2025-02-05 08:20:00"
               grave_id="12" cremation_queue_id="11" necrotomist_id="9"/>
+    
+    <!-- id 2 -->
+    <death_registrar_contact_numbers user_id="9" contact_number="999-999-9999" />
+    <!-- id 3 -->
+    <death_registrar_contact_numbers user_id="10" contact_number="+00 000 000 000" />
 
     <!-- Cremation Queue table -->
     <!-- id 6 -->

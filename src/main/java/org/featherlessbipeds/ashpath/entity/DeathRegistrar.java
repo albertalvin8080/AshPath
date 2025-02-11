@@ -7,6 +7,8 @@ import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -20,6 +22,12 @@ import java.util.Set;
 @DiscriminatorValue(value = "D_REGISTRAR")
 @PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "user_id")
 // The guy who uses the system daily to register/unregister things.
+@NamedQueries({
+    @NamedQuery(
+        name = "DeathRegistrar.RegistrationDateBetween",
+        query ="SELECT d FROM DeathRegistrar d WHERE d.registrationDate BETWEEN ?1 AND ?2"
+    )
+})
 public class DeathRegistrar extends User
 {
     @Column(name = "full_name", nullable = false)
