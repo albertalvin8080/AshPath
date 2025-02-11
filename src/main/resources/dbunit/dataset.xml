@@ -173,5 +173,127 @@
     <grave grave_location="Nosramus" />
     <!-- id 6 -->
     <grave grave_location="Maceio" />
+    
+    <!-- ================ THIRD TASK ================ -->
+    <!-- Users table (abstract base class entries) -->
+    <app_user username="Aldrich" password="xyz123" user_type="ADMIN" /> <!-- user_id==8 -->
+    <app_user username="Lucatiel" password="pass123" user_type="D_REGISTRAR" /> <!-- user_id==9 -->
+    <app_user username="Solaire" password="securepass" user_type="D_REGISTRAR" /> <!-- user_id==10 -->
+    <app_user username="Gwyndolin" password="password1" user_type="ADMIN" /> <!-- user_id==11 -->
+    <app_user username="Artorias" password="pass456" user_type="D_REGISTRAR" /> <!-- user_id==12 -->
+    <app_user username="Ciaran" password="mypass789" user_type="D_REGISTRAR" /> <!-- user_id==13 -->
+    <app_user username="Velka" password="qwerty" user_type="ADMIN" /> <!-- user_id==14 -->
+    <app_user username="Shiva" password="admin123" user_type="D_REGISTRAR" /> <!-- user_id==15 -->
+
+    <!-- Admin table -->
+    <app_admin user_id="8" admin_role="SYSTEM_ADMIN" />
+    <app_admin user_id="11" admin_role="USER_ADMIN" />
+    <app_admin user_id="14" admin_role="SYSTEM_ADMIN" />
+
+    <!-- Death Registrar table -->
+    <death_registrar user_id="9" full_name="Lucatiel of Mirrah" email="lucatiel.mirrah@gmail.com"
+                     registration_date="2024-12-01 09:30:00" last_activity_date="2025-02-01 14:20:00">
+    </death_registrar>
+
+    <death_registrar user_id="10" full_name="Solaire of Astora" email="praisethesun@gmail.com"
+                     registration_date="2024-11-10 08:45:00" last_activity_date="2025-01-25 17:15:00">
+    </death_registrar>
+
+    <death_registrar user_id="12" full_name="Knight Artorias" email="abysswalker@gmail.com"
+                     registration_date="2025-01-05 10:15:00" last_activity_date="2025-02-05 12:30:00">
+    </death_registrar>
+
+    <death_registrar user_id="13" full_name="Ciaran the Lord’s Blade" email="lordsblade@gmail.com"
+                     registration_date="2025-01-10 14:20:00" last_activity_date="2025-02-07 09:45:00">
+    </death_registrar>
+
+    <death_registrar user_id="15" full_name="Shiva of the East" email="shiva.east@gmail.com"
+                     registration_date="2025-01-15 07:30:00" last_activity_date="2025-02-10 13:00:00">
+    </death_registrar>
+
+    <!-- Necrotomist table -->
+    <!-- id 5 -->
+    <necrotomist necrotomist_name="Oscar of Astora" necrotomist_specialization="Pathologist" />
+    <!-- id 6 -->
+    <necrotomist necrotomist_name="Lautrec of Carim" necrotomist_specialization="Forensic Examiner" />
+    <!-- id 7 -->
+    <necrotomist necrotomist_name="Sirris of the Sunless Realms" necrotomist_specialization="Toxicologist" />
+    <!-- id 8 -->
+    <necrotomist necrotomist_name="Ariamis" necrotomist_specialization="DNA Analyst" />
+    <!-- id 9 -->
+    <necrotomist necrotomist_name="Havel the Rock" necrotomist_specialization="Crime Scene Analyst" />
+
+    <!-- Deceased table -->
+    <!-- id 7 -->
+    <deceased deceased_name="Siegmeyer of Catarina" deceased_cause_of_death="Car Accident"
+              deceased_birth_date="1975-06-21 00:00:00" deceased_death_date="2024-12-30 10:30:00"
+              grave_id="7" cremation_queue_id="6" necrotomist_id="5"/>
+
+    <!-- id 8 -->
+    <deceased deceased_name="Dusk of Oolacile" deceased_cause_of_death="Natural Causes"
+              deceased_birth_date="1945-04-11 00:00:00" deceased_death_date="2025-01-02 05:50:00"
+              grave_id="8" cremation_queue_id="7" necrotomist_id="6"/>
+
+    <!-- id 9 -->
+    <deceased deceased_name="Vordt of the Boreal Valley" deceased_cause_of_death="Drowning"
+              deceased_birth_date="1988-07-15 00:00:00" deceased_death_date="2025-01-20 14:10:00"
+              grave_id="9" cremation_queue_id="8" necrotomist_id="7"/>
+
+    <!-- id 10 -->
+    <deceased deceased_name="Yhorm the Giant" deceased_cause_of_death="Poisoning"
+              deceased_birth_date="1995-09-28 00:00:00" deceased_death_date="2025-02-01 18:30:00"
+              grave_id="10" cremation_queue_id="9" necrotomist_id="7"/>
+
+    <!-- id 11 -->
+    <deceased deceased_name="Pontiff Sulyvahn" deceased_cause_of_death="Gunshot"
+              deceased_birth_date="1970-11-05 00:00:00" deceased_death_date="2025-01-15 23:45:00"
+              grave_id="11" cremation_queue_id="10" necrotomist_id="8"/>
+
+    <!-- id 12 -->
+    <deceased deceased_name="Abyss Watcher" deceased_cause_of_death="Electrocution"
+              deceased_birth_date="1990-03-18 00:00:00" deceased_death_date="2025-02-05 08:20:00"
+              grave_id="12" cremation_queue_id="11" necrotomist_id="9"/>
+
+    <!-- Cremation Queue table -->
+    <!-- id 6 -->
+    <cremation_queue entered_date="2025-02-01 14:00:00" />
+    <!-- id 7 -->
+    <cremation_queue entered_date="2025-01-30 09:45:00" />
+    <!-- id 8 -->
+    <cremation_queue entered_date="2025-01-22 07:30:00" />
+    <!-- id 9 -->
+    <cremation_queue entered_date="2025-02-03 16:00:00" />
+    <!-- id 10 -->
+    <cremation_queue entered_date="2025-02-06 12:45:00" />
+    <!-- id 11 -->
+    <cremation_queue entered_date="2025-02-07 18:10:00" />
+
+    <!-- Join table -->
+    <!-- id 6 -->
+    <necrotomist_cremation_queue necrotomist_id="5" cremation_queue_id="6"/>
+    <!-- id 7 -->
+    <necrotomist_cremation_queue necrotomist_id="6" cremation_queue_id="7"/>
+    <!-- id 8 -->
+    <necrotomist_cremation_queue necrotomist_id="7" cremation_queue_id="8"/>
+    <!-- id 9 -->
+    <necrotomist_cremation_queue necrotomist_id="7" cremation_queue_id="9"/>
+    <!-- id 10 -->
+    <necrotomist_cremation_queue necrotomist_id="8" cremation_queue_id="10"/>
+    <!-- id 11 -->
+    <necrotomist_cremation_queue necrotomist_id="9" cremation_queue_id="11"/>
+
+    <!-- Grave table -->
+    <!-- id 7 -->
+    <grave grave_location="Anor Londo" />
+    <!-- id 8 -->
+    <grave grave_location="Oolacile" />
+    <!-- id 9 -->
+    <grave grave_location="The Undead Burg" />
+    <!-- id 10 -->
+    <grave grave_location="Drangleic" />
+    <!-- id 11 -->
+    <grave grave_location="Lothric" />
+    <!-- id 12 -->
+    <grave grave_location="The Kiln of the First Flame" />
 </dataset>
 
