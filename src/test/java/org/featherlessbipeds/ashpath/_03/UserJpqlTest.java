@@ -16,7 +16,6 @@ public class UserJpqlTest extends GenericTest
         query.setParameter("username", "A%");
         var list = query.getResultList();
         
-//        list.forEach(u -> System.out.println(u.getUsername()));
         list.forEach(u -> assertTrue(u.getUsername().startsWith("A")));
         
         assertEquals(2, list.size());
