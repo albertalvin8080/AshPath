@@ -8,6 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.HashSet;
@@ -16,6 +18,12 @@ import java.util.Set;
 
 @Entity
 @Table(name = "necrotomist")
+@NamedQueries({
+    @NamedQuery(
+            name = "Necrotomist.findByName",
+            query = "SELECT n FROM Necrotomist n WHERE n.name LIKE :name"
+    )
+})
 // The guy who performs autopsies and stuff
 public class Necrotomist
 {
