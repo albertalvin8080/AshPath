@@ -79,7 +79,7 @@ public class DeathRegistrarJpqlTest extends GenericTest
     {
         // WARNING: When the DR has more than one phone, we need the DISTINCT keyword in order to avoid fetching the same Deathregistrar object more than once.
         TypedQuery<DeathRegistrar> query = em.createQuery(
-                "SELECT DISTINCT dr FROM DeathRegistrar dr LEFT JOIN FETCH dr.contactNumbers WHERE dr.contactNumbers IS NOT EMPTY", 
+                "SELECT DISTINCT dr FROM DeathRegistrar dr JOIN FETCH dr.contactNumbers", 
                 DeathRegistrar.class
         );
         var list = query.getResultList();
