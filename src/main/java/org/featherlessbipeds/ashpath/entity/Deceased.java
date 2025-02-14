@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.SecondaryTable;
@@ -22,6 +23,10 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "deceased")
+@NamedQuery(
+    name = "Deceased.FindByName",
+    query = "SELECT d FROM Deceased d WHERE d.name = :name"
+)
 public class Deceased
 {
     @Id
