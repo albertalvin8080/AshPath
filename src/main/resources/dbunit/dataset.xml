@@ -299,10 +299,11 @@
     <!-- id 9 -->
     <grave grave_location="The Undead Burg" />
     <!-- id 10 -->
-    <grave grave_location="Drangleic" />
+    <grave grave_location="Maceio" />
     <!-- id 11 -->
     <grave grave_location="Lothric" />
     <!-- id 12 -->
     <grave grave_location="The Kiln of the First Flame" />
+
 </dataset>
 
