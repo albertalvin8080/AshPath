@@ -44,11 +44,13 @@ public class CremationQueue {
     }
 
     public Set<Deceased> getDeceasedSet() {
-        return Collections.unmodifiableSet(deceasedSet);
+//        return Collections.unmodifiableSet(deceasedSet);
+        return deceasedSet;
     }
 
     public Set<Necrotomist> getNecrotomistSet() {
-        return Collections.unmodifiableSet(necrotomistSet);
+//        return Collections.unmodifiableSet(necrotomistSet);
+        return necrotomistSet;
     }
 
     public Date getEnteredDate() {

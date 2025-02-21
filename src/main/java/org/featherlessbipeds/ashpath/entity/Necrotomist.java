@@ -1,5 +1,6 @@
 package org.featherlessbipeds.ashpath.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,7 +40,7 @@ public class Necrotomist
     @Column(name = "necrotomist_specialization", nullable = false)
     private String specialization; // ex: "Autopsy technician"
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "necrotomist_cremation_queue",
             joinColumns = @JoinColumn(name = "necrotomist_id"),

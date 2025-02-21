@@ -56,11 +56,11 @@ public class Deceased
     @JoinColumn(name = "grave_id", nullable = false)
     private Grave grave;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "cremation_queue_id", nullable = true)
     private CremationQueue cremationQueue;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "necrotomist_id")
     private Necrotomist necrotomist;
 
