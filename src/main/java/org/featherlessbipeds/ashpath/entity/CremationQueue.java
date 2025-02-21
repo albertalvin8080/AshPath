@@ -1,70 +1,58 @@
 package org.featherlessbipeds.ashpath.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import jakarta.persistence.*;
+import java.util.*;
 
 @Entity
 @Table(name = "cremation_queue")
-public class CremationQueue
-{
+@DiscriminatorValue("CREMATIONQUEUE")
+@NamedQueries({
+        @NamedQuery(
+                name = "CremationQueue.FindByEnteredDate",
+                query = "SELECT cq FROM CremationQueue cq WHERE cq.enteredDate = :enteredDate"
+        ),
+})
+public class CremationQueue {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cremation_queue_id")
     private Long id;
 
-    @OneToMany(mappedBy = "cremationQueue", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Deceased> deceasedSet = new HashSet<>();
+    @OneToMany(mappedBy = "cremationQueue", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private Set<Deceased> deceasedSet;
 
-    @ManyToMany(mappedBy = "cremationQueueSet", cascade =
-    {
-        CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH
-    }, fetch = FetchType.LAZY)
-    private Set<Necrotomist> necrotomistSet = new HashSet<>();
+    @ManyToMany(mappedBy = "cremationQueueSet", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private Set<Necrotomist> necrotomistSet;
 
-    @Column(name = "entered_date")
+    @Column(name = "entered_date", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date enteredDate;
 
-    @Override
-    public int hashCode()
-    {
-        int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        return hash;
+    public CremationQueue() {
+        this.deceasedSet = new HashSet<>();
+        this.necrotomistSet = new HashSet<>();
     }
 
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj)
-        {
-            return true;
-        }
-        if (obj == null)
-        {
-            return false;
-        }
-        if (getClass() != obj.getClass())
-        {
-            return false;
-        }
-        final CremationQueue other = (CremationQueue) obj;
-        return Objects.equals(this.id, other.id);
+    public CremationQueue(Date enteredDate) {
+        this();
+        this.enteredDate = enteredDate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Set<Deceased> getDeceasedSet() {
+        return Collections.unmodifiableSet(deceasedSet);
+    }
+
+    public Set<Necrotomist> getNecrotomistSet() {
+        return Collections.unmodifiableSet(necrotomistSet);
+    }
+
+    public Date getEnteredDate() {
+        return enteredDate;
     }
 
     public void setId(Long id) {
@@ -74,24 +62,43 @@ public class CremationQueue
     public void setEnteredDate(Date enteredDate) {
         this.enteredDate = enteredDate;
     }
-    
-    
 
-    public Long getId() {
-        return id;
+
+    public void addDeceased(Deceased deceased) {
+        deceasedSet.add(deceased);
+        deceased.setCremationQueue(this);
     }
 
-    public Set<Deceased> getDeceasedSet() {
-        return deceasedSet;
+    public void removeDeceased(Deceased deceased) {
+        deceasedSet.remove(deceased);
+        deceased.setCremationQueue(null);
     }
 
-    public Set<Necrotomist> getNecrotomistSet() {
-        return necrotomistSet;
+    public void addNecrotomist(Necrotomist necrotomist) {
+        necrotomistSet.add(necrotomist);
+        necrotomist.getCremationQueueSet().add(this);
     }
 
-    public Date getEnteredDate() {
-        return enteredDate;
+    public void removeNecrotomist(Necrotomist necrotomist) {
+        necrotomistSet.remove(necrotomist);
+        necrotomist.getCremationQueueSet().remove(this);
     }
-    
-    
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        CremationQueue other = (CremationQueue) obj;
+        return Objects.equals(this.id, other.id);
+    }
+
+    @Override
+    public String toString() {
+        return "CremationQueue{id=" + id + ", enteredDate=" + enteredDate + "}";
+    }
 }
