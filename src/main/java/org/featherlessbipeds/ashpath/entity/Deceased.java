@@ -53,7 +53,7 @@ public class Deceased
     private Date deathDate;
 
     @OneToOne
-    @JoinColumn(name = "grave_id", nullable = false)
+    @JoinColumn(name = "grave_id", nullable = true)
     private Grave grave;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
@@ -61,7 +61,7 @@ public class Deceased
     private CremationQueue cremationQueue;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "necrotomist_id")
+    @JoinColumn(name = "necrotomist_id", nullable = true)
     private Necrotomist necrotomist;
 
     @Override

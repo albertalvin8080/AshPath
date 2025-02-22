@@ -66,7 +66,7 @@ public class DeathRegistrarJpqlTest extends GenericTest
     public void deathRegistrar_EmailLikeYahoo() 
     {
         TypedQuery<DeathRegistrar> query = em.createQuery("SELECT d FROM DeathRegistrar d WHERE d.email LIKE :email", DeathRegistrar.class);
-        query.setParameter("email", "%yahoo%");
+        query.setParameter("email", "%@yahoo%");
         var list = query.getResultList();
         
         list.forEach(dr -> assertTrue(dr.getEmail().contains("yahoo")));
