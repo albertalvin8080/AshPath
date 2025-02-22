@@ -12,7 +12,7 @@ import org.hamcrest.MatcherAssert;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class AditionalJpql extends GenericTest
+public class AdditionalJpql extends GenericTest
 {
     @Test
     public void newDeceasedDto_from_DeceasedEntity()
