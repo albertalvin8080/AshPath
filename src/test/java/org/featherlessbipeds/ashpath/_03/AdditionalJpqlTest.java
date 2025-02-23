@@ -12,7 +12,7 @@ import org.hamcrest.MatcherAssert;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class AdditionalJpql extends GenericTest
+public class AdditionalJpqlTest extends GenericTest
 {
     @Test
     public void newDeceasedDto_from_DeceasedEntity()
@@ -101,7 +101,7 @@ public class AdditionalJpql extends GenericTest
 
         assertFalse(list.isEmpty());
         
-        String regex = "^[A-Za-z'\\s]+\\s{1}-\\s{1}[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+        String regex = "^[A-Za-z'\\s]+\\s{1}-\\s{1}[A-Za-z0-9._%+-]+@[A-Za-z0-9]+(\\.[A-Za-z]+)+$";
         Pattern pattern = Pattern.compile(regex);
         
         System.out.println(list);
