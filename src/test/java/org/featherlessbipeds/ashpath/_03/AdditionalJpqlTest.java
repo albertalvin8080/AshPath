@@ -33,15 +33,22 @@ public class AdditionalJpqlTest extends GenericTest
         );
     }
 
+    private int id = 0;
     @Test
     public void deceased_LeftJoinGrave()
     {
-        TypedQuery<Deceased> query = em.createQuery("""
-            SELECT d FROM Deceased d LEFT JOIN d.grave g
-        """, Deceased.class);
-        List<Deceased> list = query.getResultList();
+        TypedQuery<Object[]> query = em.createQuery("""
+            SELECT d.name, g.location FROM Deceased d LEFT JOIN d.grave g
+        """, Object[].class);
+        List<Object[]> list = query.getResultList();
 
         assertEquals(13, list.size());
+        
+        list.forEach(o -> {
+            if (o[1] != null) ++i;
+        });
+
+        assertEquals(12, i);
     }
     
     // https://docs.jboss.org/hibernate/jpa/2.1/api/javax/persistence/criteria/JoinType.html
