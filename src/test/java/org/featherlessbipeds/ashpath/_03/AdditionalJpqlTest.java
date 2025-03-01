@@ -33,7 +33,7 @@ public class AdditionalJpqlTest extends GenericTest
         );
     }
 
-    private int id = 0;
+    private int i = 0;
     @Test
     public void deceased_LeftJoinGrave()
     {

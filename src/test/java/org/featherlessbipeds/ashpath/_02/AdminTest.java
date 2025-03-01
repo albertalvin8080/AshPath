@@ -19,13 +19,13 @@ public class AdminTest extends TestHelper
     {
         var newRole = AdminRole.USER_ADMIN;
         var newUsername = "Strokovsky";
-        var newPasswordHash = "AAAAA";
+        var newPassword = "Somepasswor11d@@@";
         
         Long id = ADMIN_ID_7;
         Admin adm = em.find(Admin.class, id);
         adm.setRole(newRole);
         adm.setUsername(newUsername);
-        adm.setPasswordHash(newPasswordHash);
+        adm.setPassword(newPassword);
         
         em.flush();
         
@@ -37,7 +37,7 @@ public class AdminTest extends TestHelper
         
         assertEquals(adm.getRole(), newRole);
         assertEquals(adm.getUsername(), newUsername);
-        assertEquals(adm.getPasswordHash(), newPasswordHash);
+        assertEquals(adm.getPassword(), newPassword);
     }
 
     @Test
@@ -46,13 +46,13 @@ public class AdminTest extends TestHelper
     {
         var newRole = AdminRole.CONTENT_ADMIN;
         var newUsername = "Rinkovsky";
-        var newPasswordHash = "BBBBB";
+        var newPasswordHash = "$%NewPassword";
         
         Long id = ADMIN_ID_7;
         Admin adm = em.find(Admin.class, id);
         adm.setRole(newRole);
         adm.setUsername(newUsername);
-        adm.setPasswordHash(newPasswordHash);
+        adm.setPassword(newPasswordHash);
         
         em.clear();
         adm = (Admin) em.merge(adm);
@@ -63,7 +63,7 @@ public class AdminTest extends TestHelper
         
         assertEquals(adm.getRole(), newRole);
         assertEquals(adm.getUsername(), newUsername);
-        assertEquals(adm.getPasswordHash(), newPasswordHash);
+        assertEquals(adm.getPassword(), newPasswordHash);
     }
 
     @Test

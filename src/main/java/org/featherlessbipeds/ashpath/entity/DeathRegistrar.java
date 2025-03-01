@@ -13,9 +13,13 @@ import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import org.featherlessbipeds.ashpath.validator.ContactNumbers;
 
 @Entity
 @Table(name = "death_registrar")
@@ -30,17 +34,22 @@ import java.util.Set;
 })
 public class DeathRegistrar extends User
 {
+    @NotBlank
+    @Pattern(regexp = "^[\\p{L}\\s']{2,40}$", message = "{org.featherlessbipeds.ashpath.entity.DeathRegistrar.fullname}")
     @Column(name = "full_name", nullable = false)
     private String fullName;
-
+    
     @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(
         name = "death_registrar_contact_numbers", 
         joinColumns = @JoinColumn(name = "user_id")
     )
     @Column(name = "contact_number", nullable = false)
+    @ContactNumbers
     private Set<String> contactNumbers = new HashSet<>();
 
+    @Email(message = "{org.featherlessbipeds.ashpath.entity.DeathRegistrar.email}")
+    @NotBlank
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
@@ -48,7 +57,7 @@ public class DeathRegistrar extends User
     @Temporal(TemporalType.TIMESTAMP)
     private Date registrationDate;
 
-    @Column(name = "last_activity_date", nullable = true)
+    @Column(name = "last_activity_date", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastActivityDate;
     
@@ -72,8 +81,6 @@ public class DeathRegistrar extends User
     public void setLastActivityDate(Date lastActivityDate) {
         this.lastActivityDate = lastActivityDate;
     }
-    
-    
 
     public String getFullName() {
         return fullName;
@@ -94,6 +101,4 @@ public class DeathRegistrar extends User
     public Date getLastActivityDate() {
         return lastActivityDate;
     }
-    
-    
 }

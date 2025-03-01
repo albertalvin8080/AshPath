@@ -22,8 +22,6 @@ public class DeceasedDto
         this.birthDate = birthDate;
         this.deathDate = deathDate;
     }
-    
-    
 
     public void setId(Long id) {
         this.id = id;

@@ -1,6 +1,8 @@
 package org.featherlessbipeds.ashpath.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import java.util.Objects;
 
 @Entity
@@ -14,9 +16,16 @@ public abstract class User
     @Column(name = "user_id")
     private Long id;
 
+    @NotBlank
+    @Pattern(regexp = "^[\\p{L}\\p{Digit}.'_-]{4,16}$", message = "{org.featherlessbipeds.ashpath.entity.User.name}")
     @Column(name = "username")
     private String username;
 
+    @NotBlank
+    @Pattern(
+            regexp = "^(?=.*\\p{Lu})(?=.*[@$!%*?&])[\\p{L}\\p{Digit}@$!%*?&]{8,20}$",
+            message = "{org.featherlessbipeds.ashpath.entity.User.password}"
+    )
     @Column(name = "password")
     private String password;
 
@@ -47,31 +56,33 @@ public abstract class User
         return Objects.equals(this.id, other.id);
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(String username)
+    {
         this.username = username;
     }
 
-    public void setPasswordHash(String passwordHash) {
-        this.password = passwordHash;
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
-    
-    
 
-    public Long getId() {
+    public Long getId()
+    {
         return id;
     }
 
-    public String getUsername() {
+    public String getUsername()
+    {
         return username;
     }
 
-    public String getPasswordHash() {
+    public String getPassword()
+    {
         return password;
     }
-    
-    
 }

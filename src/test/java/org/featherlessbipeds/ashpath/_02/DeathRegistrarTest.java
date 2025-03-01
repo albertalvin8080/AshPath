@@ -16,7 +16,7 @@ public class DeathRegistrarTest extends TestHelper
     @Test
     public void updateDeathRegistrar()
     {
-        var newEmail = "newemail@mail.com";
+        var newEmail = "newemail@gmail.com";
         var newFullName = "Never Say Ever";
         
         Long id = DR_ID_5;
@@ -40,7 +40,7 @@ public class DeathRegistrarTest extends TestHelper
     @SuppressWarnings("UnusedAssignment")
     public void updateDeathRegistrarMerge()
     {
-        var newEmail = "somemail@mail.com";
+        var newEmail = "somemail@gmail.com";
         var newFullName = "Help Me";
         
         Long id = DR_ID_5;

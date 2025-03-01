@@ -14,11 +14,10 @@ public class AdminTest extends TestHelper
     {
         Admin adm = new Admin();
         adm.setRole(AdminRole.SYSTEM_ADMIN);
-        adm.setPasswordHash("12345");
-        adm.setUsername("Franz Bonaparta");
+        adm.setPassword("P@ssword123");
+        adm.setUsername("FranzBonaparta");
 
         em.persist(adm);
-        // Why the hell is this necessary? Shoundn't it be fetching from the persistence context?
         em.flush();
 
         assertNotNull(adm.getId());
@@ -29,7 +28,7 @@ public class AdminTest extends TestHelper
     {
         Admin adm = em.find(Admin.class, 3L);
         assertNotNull(adm);
-        assertEquals(adm.getPasswordHash(), "hashhashhash");
+        assertEquals(adm.getPassword(), "Hash%66hash");
         assertEquals(adm.getRole(), AdminRole.USER_ADMIN);
         assertEquals(adm.getUsername(), "mononoke");
     }

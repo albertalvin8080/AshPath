@@ -20,9 +20,9 @@ public class DeathRegistrarTest extends TestHelper
         dr.setUsername("Madoka");
         dr.setEmail("madoka@yahoo.com");
         dr.setFullName("Madoka Kaname");
-        dr.setLastActivityDate(null);
+        dr.setLastActivityDate(new Date());
         dr.setRegistrationDate(new Date());
-        dr.setPasswordHash("kyuubey999");
+        dr.setPassword("Kyuubey%999");
         
         em.persist(dr);
         em.flush();
@@ -44,7 +44,7 @@ public class DeathRegistrarTest extends TestHelper
         assertEquals(dr.getEmail(), "jakubfarobec@gmail.com");
         assertEquals(dr.getFullName(), "Jakub Farobek");
         assertEquals(dr.getUsername(), "Jakub");
-        assertEquals(dr.getPasswordHash(), "12345abcde");
+        assertEquals(dr.getPassword(), "12345aBc$de");
         
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         assertEquals(dr.getRegistrationDate(), dateFormat.parse("2023-01-15 10:00:00"));

@@ -2,9 +2,9 @@
 <dataset>
     <!-- ======== FIRST TASK ======== -->
     <!-- Users table (abstract base class entries) -->
-    <app_user username="Johan" password="abcde" user_type="ADMIN" /> <!-- user_id==1 -->
-    <app_user username="Jakub" password="12345abcde" user_type="D_REGISTRAR" /> <!-- user_id==2 -->
-    <app_user username="mononoke" password="hashhashhash" user_type="ADMIN" /> <!-- user_id==3 -->
+    <app_user username="Johan" password="3N3wpass%com" user_type="ADMIN" /> <!-- user_id==1 -->
+    <app_user username="Jakub" password="12345aBc$de" user_type="D_REGISTRAR" /> <!-- user_id==2 -->
+    <app_user username="mononoke" password="Hash%66hash" user_type="ADMIN" /> <!-- user_id==3 -->
 
     <!-- Admin table -->
     <app_admin user_id="1" admin_role="SYSTEM_ADMIN" />
@@ -93,10 +93,10 @@
     <!-- ======== SECOND TASK ======== -->
     
     <!-- Users table (abstract base class entries) -->
-    <app_user username="Emil" password="123" user_type="ADMIN" /> <!-- user_id==4 -->
-    <app_user username="Sebe" password="123" user_type="D_REGISTRAR" /> <!-- user_id==5 -->
-    <app_user username="Mark" password="123" user_type="D_REGISTRAR" /> <!-- user_id==6 -->
-    <app_user username="Rodolfo" password="123" user_type="ADMIN" /> <!-- user_id==7 -->
+    <app_user username="Emil" password="3N3wpass%com" user_type="ADMIN" /> <!-- user_id==4 -->
+    <app_user username="Sebe" password="3N3wpass%com" user_type="D_REGISTRAR" /> <!-- user_id==5 -->
+    <app_user username="Mark" password="3N3wpass%com" user_type="D_REGISTRAR" /> <!-- user_id==6 -->
+    <app_user username="Rodolfo" password="3N3wpass%com" user_type="ADMIN" /> <!-- user_id==7 -->
 
     <!-- Admin table -->
     <app_admin user_id="4" admin_role="USER_ADMIN" />
@@ -178,15 +178,15 @@
     
     <!-- ================ THIRD TASK ================ -->
     <!-- Users table (abstract base class entries) -->
-    <app_user username="Aldrich" password="xyz123" user_type="ADMIN" /> <!-- user_id==8 -->
-    <app_user username="Lucatiel" password="pass123" user_type="D_REGISTRAR" /> <!-- user_id==9 -->
-    <app_user username="Solaire" password="securepass" user_type="D_REGISTRAR" /> <!-- user_id==10 -->
-    <app_user username="Gwyndolin" password="password1" user_type="ADMIN" /> <!-- user_id==11 -->
-    <app_user username="Artorias" password="pass456" user_type="D_REGISTRAR" /> <!-- user_id==12 -->
-    <app_user username="Ciaran" password="mypass789" user_type="D_REGISTRAR" /> <!-- user_id==13 -->
-    <app_user username="Velka" password="qwerty" user_type="ADMIN" /> <!-- user_id==14 -->
-    <app_user username="Shiva" password="admin123" user_type="D_REGISTRAR" /> <!-- user_id==15 -->
-    <app_user username="Gael" password="admin123" user_type="ADMIN" /> <!-- user_id==16 -->
+    <app_user username="Aldrich" password="3N3wpass%com" user_type="ADMIN" /> <!-- user_id==8 -->
+    <app_user username="Lucatiel" password="3N3wpass%com" user_type="D_REGISTRAR" /> <!-- user_id==9 -->
+    <app_user username="Solaire" password="3N3wpass%com" user_type="D_REGISTRAR" /> <!-- user_id==10 -->
+    <app_user username="Gwyndolin" password="3N3wpass%com" user_type="ADMIN" /> <!-- user_id==11 -->
+    <app_user username="Artorias" password="3N3wpass%com" user_type="D_REGISTRAR" /> <!-- user_id==12 -->
+    <app_user username="Ciaran" password="3N3wpass%com" user_type="D_REGISTRAR" /> <!-- user_id==13 -->
+    <app_user username="Velka" password="3N3wpass%com" user_type="ADMIN" /> <!-- user_id==14 -->
+    <app_user username="Shiva" password="3N3wpass%com" user_type="D_REGISTRAR" /> <!-- user_id==15 -->
+    <app_user username="Gael" password="3N3wpass%com" user_type="ADMIN" /> <!-- user_id==16 -->
 
     <!-- Admin table -->
     <app_admin user_id="8" admin_role="SYSTEM_ADMIN" />
