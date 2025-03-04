@@ -125,6 +125,7 @@ public class Deceased
 
     public void setNecrotomist(Necrotomist necrotomist) {
         this.necrotomist = necrotomist;
+        necrotomist.addDeceased(this);
     }
     
     
