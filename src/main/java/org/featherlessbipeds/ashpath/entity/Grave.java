@@ -8,7 +8,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.Objects;
+import org.featherlessbipeds.ashpath.validator.ValidGraveLocation;
 
 @Entity
 @Table(name = "grave")
@@ -18,11 +21,14 @@ public class Grave {
     @Column(name = "grave_id")
     private Long id;
     
+    @NotNull(message = "{grave.location.notnull}")
+    @Size(min = 1, max = 30, message = "{grave.location.size}")
+    @ValidGraveLocation(message = "{grave.location.no.float}")
     @Column(name = "grave_location")
-    private String location; // row number in a cemetery?
+    private String location;
 
-    @OneToOne(mappedBy = "grave")
-    private Deceased deceased;    
+    @OneToOne(mappedBy = "grave", cascade = CascadeType.ALL)
+    private Deceased deceased;
 
     @Override
     public int hashCode()
