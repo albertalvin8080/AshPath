@@ -1,22 +1,25 @@
 package org.featherlessbipeds.ashpath._04;
 
-import org.featherlessbipeds.ashpath.utils.TestHelper;
-
+import jakarta.persistence.TypedQuery;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
 import org.featherlessbipeds.ashpath.entity.Grave;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.featherlessbipeds.ashpath.utils.GenericTest;
+import org.junit.Before;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-public class GraveValidationTest {
+public class GraveValidationTest extends GenericTest {
 
-    private static Validator validator;
+    private Validator validator;
 
-    @BeforeAll
-    public static void setUp() {
+    @Before
+    public void setUpValidator() {
+        // Inicializa o Validator
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
     }
@@ -32,7 +35,7 @@ public class GraveValidationTest {
     }
 
     @Test
-    public void testGraveLocationSize() {
+    public void testGraveLocationBigSize() {
         Grave grave = new Grave();
         grave.setLocation("Esta localização tem mais de trinta caracteres, o que é inválido.");
 
@@ -41,14 +44,28 @@ public class GraveValidationTest {
         assertEquals("A localização do túmulo deve ter entre 1 e 30 caracteres.", violations.iterator().next().getMessage());
     }
 
-    @Test
-    public void testGraveLocationNoFloat() {
-        Grave grave = new Grave();
-        grave.setLocation("Local 123.45");
 
-        var violations = validator.validate(grave);
-        assertFalse(violations.isEmpty());
-        assertEquals("A localização do túmulo não pode conter números decimais.", violations.iterator().next().getMessage());
+    @Test
+    public void updateLocationWithFloatError() {
+        // Busca um Grave existente no banco de dados
+        TypedQuery<Grave> query = em.createQuery(
+                "SELECT g FROM Grave g WHERE g.location = :location", Grave.class);
+        query.setParameter("location", "Anor Londo");
+        Grave grave = query.getSingleResult();
+
+        // Atualiza a localização para um valor inválido (contém números decimais)
+        grave.setLocation("Anor Londo 123.45");
+
+        try {
+            // Tenta persistir a alteração
+            em.flush();
+            fail("Deveria ter lançado uma ConstraintViolationException"); // Se não lançar exceção, o teste falha
+        } catch (ConstraintViolationException ex) {
+            // Captura a exceção e verifica a mensagem de erro e o número de violações
+            ConstraintViolation<?> violation = ex.getConstraintViolations().iterator().next();
+            assertEquals("A localização do túmulo não pode conter números decimais.", violation.getMessage());
+            assertEquals(1, ex.getConstraintViolations().size());
+        }
     }
 
     @Test

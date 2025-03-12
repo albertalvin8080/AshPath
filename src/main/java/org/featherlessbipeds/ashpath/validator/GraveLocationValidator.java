@@ -12,7 +12,7 @@ public class GraveLocationValidator implements ConstraintValidator<ValidGraveLoc
     @Override
     public boolean isValid(String location, ConstraintValidatorContext context) {
         if (location == null) {
-            return false;
+            return true; // Ignora valores nulos, pois @NotNull já cuida disso
         }
         // Rejeita números decimais (floats)
         return !location.matches(".*\\d+\\.\\d+.*");
