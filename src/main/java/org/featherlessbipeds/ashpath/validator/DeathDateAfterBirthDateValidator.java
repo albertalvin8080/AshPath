@@ -8,7 +8,7 @@ public class DeathDateAfterBirthDateValidator implements ConstraintValidator<Dea
 
     @Override
     public boolean isValid(Deceased deceased, ConstraintValidatorContext context) {
-        if (deceased == null) {
+        if (deceased == null || deceased.getBirthDate()== null) {
             return true;
         }
         

@@ -1,6 +1,11 @@
 package org.featherlessbipeds.ashpath.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Size;
+import org.featherlessbipeds.ashpath.validator.MinDate;
+
 import java.util.*;
 
 @Entity
@@ -19,12 +24,18 @@ public class CremationQueue {
     @Column(name = "cremation_queue_id")
     private Long id;
 
+    @NotNull(message = "{CREMATIONQUEUE.DECEASEDSET.NOTNULL  }")
+    @Size(min = 1, message = "{CREMATIONQUEUE.DECEASEDSET.NOTEMPTY}")
     @OneToMany(mappedBy = "cremationQueue", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<Deceased> deceasedSet;
 
+    @NotNull(message = "{CREMATIONQUEUE.NECROTOMISTSET.NOTNULL}")
+    @Size(min = 1, message = "{CREMATIONQUEUE.NECROTOMISTSET.NOTEMPTY}")
     @ManyToMany(mappedBy = "cremationQueueSet", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Necrotomist> necrotomistSet;
 
+    @PastOrPresent(message = "{CREMATIONQUEUE.ENTEREDDATE.PASTORPRESENT}")
+    @MinDate(value = "1500-01-01 00:00", message = "{CREMATIONQUEUE.ENTEREDDATE.MINDATE}")
     @Column(name = "entered_date", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date enteredDate;

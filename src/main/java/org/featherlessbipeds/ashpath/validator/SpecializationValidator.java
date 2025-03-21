@@ -26,6 +26,6 @@ public class SpecializationValidator implements ConstraintValidator<Specializati
    
     @Override
     public boolean isValid(String specialization, ConstraintValidatorContext cvc) {
-        return validSpecializations.contains(specialization);
+        return specialization != null && validSpecializations.contains(specialization);
     }
 }
