@@ -24,18 +24,18 @@ public class CremationQueue {
     @Column(name = "cremation_queue_id")
     private Long id;
 
-    @NotNull(message = "{CREMATIONQUEUE.DECEASEDSET.NOTNULL  }")
-    @Size(min = 1, message = "{CREMATIONQUEUE.DECEASEDSET.NOTEMPTY}")
+    @NotNull(message = "{org.featherlessbipeds.ashpath.entity.CremationQueue.DeceasedSet.notNull}")
+    @Size(min = 1, message = "{org.featherlessbipeds.ashpath.entity.CremationQueue.DeceasedSet.notEmpty}")
     @OneToMany(mappedBy = "cremationQueue", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<Deceased> deceasedSet;
 
-    @NotNull(message = "{CREMATIONQUEUE.NECROTOMISTSET.NOTNULL}")
-    @Size(min = 1, message = "{CREMATIONQUEUE.NECROTOMISTSET.NOTEMPTY}")
+    @NotNull(message = "{org.featherlessbipeds.ashpath.entity.CremationQueue.Necrotomist.notNull}")
+    @Size(min = 1, message = "{org.featherlessbipeds.ashpath.entity.CremationQueue.Necrotomist.notEmpty}")
     @ManyToMany(mappedBy = "cremationQueueSet", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Necrotomist> necrotomistSet;
 
-    @PastOrPresent(message = "{CREMATIONQUEUE.ENTEREDDATE.PASTORPRESENT}")
-    @MinDate(value = "1500-01-01 00:00", message = "{CREMATIONQUEUE.ENTEREDDATE.MINDATE}")
+    @PastOrPresent(message = "{org.featherlessbipeds.ashpath.entity.CremationQueue.enteredDate.pastOrPresent}")
+    @MinDate(value = "1500-01-01 00:00", message = "{org.featherlessbipeds.ashpath.entity.CremationQueue.enteredDate.minDate}")
     @Column(name = "entered_date", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date enteredDate;
@@ -75,7 +75,6 @@ public class CremationQueue {
     public void setEnteredDate(Date enteredDate) {
         this.enteredDate = enteredDate;
     }
-
 
     public void addDeceased(Deceased deceased) {
         deceasedSet.add(deceased);
