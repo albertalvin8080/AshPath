@@ -36,10 +36,10 @@ public class DeceasedValidationTest extends TestHelper {
                         violation.getRootBeanClass() + "." + violation.getPropertyPath() + ": " + violation.getMessage(),
                         CoreMatchers.anyOf(
                                 startsWith("class org.featherlessbipeds.ashpath.entity.Deceased.: A data de morte deve ser posterior à data de nascimento."),
-                                startsWith("class org.featherlessbipeds.ashpath.entity.Deceased.name: Deve possuir de 2 a 40 caracteres, incluindo letras, espaços e apóstrofes."),
-                                startsWith("class org.featherlessbipeds.ashpath.entity.Deceased.causeOfDeath: não deve estar em branco"),
-                                startsWith("class org.featherlessbipeds.ashpath.entity.Deceased.deathDate: deve ser uma data no passado ou no presente"),
-                                startsWith("class org.featherlessbipeds.ashpath.entity.Deceased.birthDate: deve ser uma data passada")
+                                startsWith("class org.featherlessbipeds.ashpath.entity.Deceased.name: O nome deve possuir de 2 a 40 caracteres, incluindo letras, espaços e apóstrofes."),
+                                startsWith("class org.featherlessbipeds.ashpath.entity.Deceased.causeOfDeath: não deve estar em branco."),
+                                startsWith("class org.featherlessbipeds.ashpath.entity.Deceased.deathDate: deve ser uma data passada ou presente."),
+                                startsWith("class org.featherlessbipeds.ashpath.entity.Deceased.birthDate: deve ser uma data passada.")
                         )
                 );
             });
@@ -72,10 +72,10 @@ public class DeceasedValidationTest extends TestHelper {
                         violation.getRootBeanClass() + "." + violation.getPropertyPath() + ": " + violation.getMessage(),
                         CoreMatchers.anyOf(
                                 startsWith("class org.featherlessbipeds.ashpath.entity.Deceased.: A data de morte deve ser posterior à data de nascimento."),
-                                startsWith("class org.featherlessbipeds.ashpath.entity.Deceased.name: Deve possuir de 2 a 40 caracteres, incluindo letras, espaços e apóstrofes."),
-                                startsWith("class org.featherlessbipeds.ashpath.entity.Deceased.causeOfDeath: não deve estar em branco"),
-                                startsWith("class org.featherlessbipeds.ashpath.entity.Deceased.deathDate: deve ser uma data no passado ou no presente"),
-                                startsWith("class org.featherlessbipeds.ashpath.entity.Deceased.birthDate: deve ser uma data passada")
+                                startsWith("class org.featherlessbipeds.ashpath.entity.Deceased.name: O nome deve possuir de 2 a 40 caracteres, incluindo letras, espaços e apóstrofes."),
+                                startsWith("class org.featherlessbipeds.ashpath.entity.Deceased.causeOfDeath: não deve estar em branco."),
+                                startsWith("class org.featherlessbipeds.ashpath.entity.Deceased.deathDate: deve ser uma data passada ou presente."),
+                                startsWith("class org.featherlessbipeds.ashpath.entity.Deceased.birthDate: deve ser uma data passada.")
                         )
                 );
             });
