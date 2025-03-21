@@ -44,7 +44,6 @@ public class GraveValidationTest extends GenericTest {
         assertEquals("A localização do túmulo deve ter entre 1 e 30 caracteres.", violations.iterator().next().getMessage());
     }
 
-
     @Test
     public void updateLocationWithFloatError() {
         // Busca um Grave existente no banco de dados
