@@ -46,18 +46,18 @@ public class Deceased
     @Column(name = "deceased_name", nullable = false)
     private String name;
 
-    @NotBlank
+    @NotBlank(message = "{org.featherlessbipeds.ashpath.entity.Deceased.causeOfDeath}")
     @Column(name = "deceased_cause_of_death", nullable = false)
     private String causeOfDeath;
 
     @NotNull
-    @Past
+    @Past(message = "{org.featherlessbipeds.ashpath.entity.Deceased.birthDate}")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "deceased_birth_date", nullable = false)
     private Date birthDate;
 
     @NotNull
-    @PastOrPresent
+    @PastOrPresent(message = "{org.featherlessbipeds.ashpath.entity.Deceased.deathDate}")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "deceased_death_date", nullable = false)
     private Date deathDate;
