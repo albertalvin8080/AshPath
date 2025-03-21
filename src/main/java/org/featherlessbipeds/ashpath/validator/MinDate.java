@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = MinDateValidator.class)
 public @interface MinDate {
-    String message() default "A data deve ser posterior a {value}";
+    String message() default "{org.featherlessbipeds.ashpath.entity.CremationQueue.enteredDate.minDate.param}";
 
     Class<?>[] groups() default {};
 
