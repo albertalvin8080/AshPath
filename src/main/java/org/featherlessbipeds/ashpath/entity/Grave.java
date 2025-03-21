@@ -21,9 +21,9 @@ public class Grave {
     @Column(name = "grave_id")
     private Long id;
     
-    @NotNull(message = "{grave.location.notnull}")
-    @Size(min = 1, max = 30, message = "{grave.location.size}")
-    @ValidGraveLocation(message = "{grave.location.no.float}")
+    @NotNull(message = "{org.featherlessbipeds.ashpath.entity.Grave.location.notnull}")
+    @Size(min = 1, max = 30, message = "{org.featherlessbipeds.ashpath.entity.Grave.location.size}")
+    @ValidGraveLocation(message = "{org.featherlessbipeds.ashpath.entity.Grave.location.no.float}")
     @Column(name = "grave_location")
     private String location;
 
