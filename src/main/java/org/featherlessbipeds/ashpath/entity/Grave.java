@@ -80,6 +80,4 @@ public class Grave {
     public Deceased getDeceased() {
         return deceased;
     }
-    
-    
 }
