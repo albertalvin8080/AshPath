@@ -66,7 +66,7 @@ public class CremationQueueValidationTest extends TestHelper {
     public void atualizarCremationQueueInvalido() throws ParseException {
         // Busca uma CremationQueue valida no banco de dados
         CremationQueue cremationQueue = em.createQuery("SELECT cq FROM CremationQueue cq WHERE cq.enteredDate = :enteredDate", CremationQueue.class)
-                .setParameter("enteredDate", criarData("2023-01-01 10:00"))
+                .setParameter("enteredDate", criarData("2025-02-01 14:00:00"))
                 .getSingleResult();
 
         // Configuracao invalida
